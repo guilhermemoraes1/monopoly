@@ -3,23 +3,19 @@ package com.example.monopoly;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.monopoly.validator.WordUtils;
+
 public class PlayerManager {
     private List<Player> players;
     private int currentPlayerIndex;
 
     public PlayerManager() {
         this.players = new ArrayList<>();
-        this.currentPlayerIndex = 0;
     }
 
     public void createPlayers(int numPlayers, String playerNames, String tokenColors) {
-        if (playerNames.charAt(0) == '{') {
-            playerNames = playerNames.substring(1, playerNames.length() - 1);
-        }
-        if (tokenColors.charAt(0) == '{') {
-            tokenColors = tokenColors.substring(1, tokenColors.length() - 1);
-        }
-    
+        playerNames = WordUtils.hasCurlyBraces(playerNames);
+        tokenColors = WordUtils.hasCurlyBraces(tokenColors);
 
         String[] names = playerNames.split(",");
         String[] colors = tokenColors.split(",");
@@ -40,6 +36,10 @@ public class PlayerManager {
         }
         throw new IllegalArgumentException("Player doesn't exist");
     }
+
+    public void setCurrentPlayerIndex(int index) {
+        this.currentPlayerIndex = index;
+    }    
 
     public List<Player> getPlayers() {
         return players;

@@ -23,7 +23,6 @@ public class GameInputData {
         );
     }
 
-    // posso refatorar ainda mais
     public MonopolyGame configureGame(Scanner scanner) {
         System.out.print("Enter the number of players [2-8]: ");
         int numPlayers = scanner.nextInt();

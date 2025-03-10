@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.example.monopoly.validator.GameValidator;
+import com.example.monopoly.validator.WordUtils;
 
 public class MonopolyGame {
     private final PlayerManager playerManager;
@@ -23,6 +24,8 @@ public class MonopolyGame {
     }
 
     public void createGame(int numPlayers, String playerNames, String tokenColors) {
+        playerNames = WordUtils.hasCurlyBraces(playerNames);
+        tokenColors = WordUtils.hasCurlyBraces(tokenColors);
         gameValidator.validateGame(numPlayers, playerNames, tokenColors);
         playerManager.createPlayers(numPlayers, playerNames, tokenColors);
         this.numPlayers = numPlayers;
@@ -49,7 +52,9 @@ public class MonopolyGame {
 
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % numPlayers;
+        playerManager.setCurrentPlayerIndex(currentPlayerIndex);
     }
+    
 
     public Set<String> getCommands() {
         return gameController.getCommands().keySet();

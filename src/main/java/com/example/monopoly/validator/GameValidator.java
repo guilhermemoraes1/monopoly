@@ -13,9 +13,10 @@ public class GameValidator {
     }
  
     public void validateGame(int numPlayers, String playerNames, String tokenColors) {
+        playerLimitValidator.validate(numPlayers);
         playerNameValidator.validate(numPlayers, playerNames);
         tokenColorValidator.validate(numPlayers, tokenColors);
-        playerLimitValidator.validate(numPlayers);
+        
     }
 }
 
