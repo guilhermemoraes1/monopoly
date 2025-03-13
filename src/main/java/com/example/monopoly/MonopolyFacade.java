@@ -2,6 +2,7 @@ package com.example.monopoly;
 
 import java.util.Set;
 
+import com.example.monopoly.commands.RollCommand;
 import com.example.monopoly.validator.GameValidator;
 import com.example.monopoly.validator.PlayerNameValidator;
 import com.example.monopoly.validator.PlayerLimitValidator;
@@ -83,6 +84,11 @@ public class MonopolyFacade {
 
     public int getPropertyRent(int placeID) {
         return board.getPropertyRent(placeID);
+    }
+
+    public void rollDice(int firstDieResult, int secondDieResult) {
+        RollCommand rollCommand = new RollCommand();
+        rollCommand.rollDice(monopolyGame, firstDieResult, secondDieResult);
     }
 
     public void quitGame() {
