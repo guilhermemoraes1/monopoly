@@ -75,4 +75,8 @@ public class MonopolyGame {
     public PlayerManager getPlayerManager() {
         return playerManager;
     }
+
+    public GameController getGameController() {
+        return gameController;
+    }
 }

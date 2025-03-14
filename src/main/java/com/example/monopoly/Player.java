@@ -38,5 +38,7 @@ public class Player {
         return deeds;
     }
 
-    
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }

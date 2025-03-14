@@ -10,8 +10,10 @@ import java.util.LinkedHashMap;
 
 public class GameController {
     private final Map<String, Command> commands = new LinkedHashMap<>();
+    private Board board;
     
     public GameController() {
+        this.board = new Board();
         commands.put("roll", new RollCommand());
         commands.put("status", new StatusCommand());
         commands.put("quit", new QuitCommand());
@@ -25,6 +27,10 @@ public class GameController {
         } else {
             System.out.println("Invalid command. Try again.");
         }
+    }
+
+    public Board getBoard() {
+        return board; 
     }
 
     public Map<String, Command> getCommands() {

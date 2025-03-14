@@ -12,7 +12,6 @@ public class MonopolyFacade {
     
     private MonopolyGame monopolyGame;
     private Board board;
-    private GameController gameController;
 
     public MonopolyFacade() {
         this.board = new Board();
@@ -22,7 +21,6 @@ public class MonopolyFacade {
             new PlayerLimitValidator()
         );
         this.monopolyGame = new MonopolyGame(gameValidator);
-        this.gameController = new GameController();
     }
 
     public void createGame(int numPlayers, String playerNames, String tokenColors) {
@@ -68,11 +66,6 @@ public class MonopolyFacade {
         return "{" + String.join(",", commands) + "}";
     }
 
-    public void rollDice(int firstDieResult, int secondDieResult) {
-        RollCommand rollCommand = new RollCommand();
-        rollCommand.execute(monopolyGame, monopolyGame.getCurrentPlayer(), firstDieResult, secondDieResult);
-    }
-
     public String getPlaceName(int placeID) {
         return board.getPlaceName(placeID);
     }
@@ -91,6 +84,11 @@ public class MonopolyFacade {
 
     public int getPropertyRent(int placeID) {
         return board.getPropertyRent(placeID);
+    }
+
+    public void rollDice(int firstDieResult, int secondDieResult) {
+        RollCommand rollCommand = new RollCommand();
+        rollCommand.execute(monopolyGame, monopolyGame.getCurrentPlayer(), firstDieResult, secondDieResult);
     }
 
     public void quitGame() {

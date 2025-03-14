@@ -1,5 +1,6 @@
 package com.example.monopoly.commands;
 
+import com.example.monopoly.Board;
 import com.example.monopoly.MonopolyGame;
 import com.example.monopoly.Player;
 
@@ -12,19 +13,34 @@ public class RollCommand implements Command {
         validateDiceResults(firstDieResult, secondDieResult);
 
         int diceSum = firstDieResult + secondDieResult;
-        System.out.println(player.getName() + " rolled a " + firstDieResult + " and a " + secondDieResult + " for a total of " + diceSum);
+        // System.out.println(player.getName() + " rolled a " + firstDieResult + " and a " + secondDieResult + " for a total of " + diceSum);
+        updatePlayerPosition(game, player, diceSum);
+        game.nextTurn();
     }
 
     public void execute(MonopolyGame game, Player player, int firstDieResult, int secondDieResult) {
         validateDiceResults(firstDieResult, secondDieResult);
 
         int diceSum = firstDieResult + secondDieResult;
-        System.out.println(player.getName() + " rolled a " + firstDieResult + " and a " + secondDieResult + " for a total of " + diceSum);
+        // System.out.println(player.getName() + " rolled a " + firstDieResult + " and a " + secondDieResult + " for a total of " + diceSum);
+        updatePlayerPosition(game, player, diceSum);
+        game.nextTurn();
     }
 
     private void validateDiceResults(int firstDieResult, int secondDieResult) {
         if (firstDieResult <= 0 || firstDieResult > 6 || secondDieResult <= 0 || secondDieResult > 6) {
             throw new IllegalArgumentException("Invalid die result");
         }
+    }
+
+    private void updatePlayerPosition(MonopolyGame game, Player player, int diceSum) {
+        int newPosition = player.getPlayerPosition() + diceSum;
+    
+        if (newPosition > 40) {
+            newPosition -= 40;
+        }
+    
+        player.setPosition(newPosition);
+        // System.out.println(player.getName() + " agora está na posição " + currentPlace.getName());
     }
 }
