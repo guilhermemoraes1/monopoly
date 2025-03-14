@@ -31,6 +31,10 @@ public class Place {
         return rent;
     }
 
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }    
+
     public String getOwner() {
         return owner;
     }

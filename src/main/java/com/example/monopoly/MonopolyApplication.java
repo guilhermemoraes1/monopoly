@@ -3,7 +3,7 @@ package com.example.monopoly;
 import java.util.Scanner;
 
 public class MonopolyApplication {
-
+    
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

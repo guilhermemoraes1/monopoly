@@ -12,6 +12,7 @@ public class MonopolyFacade {
     
     private MonopolyGame monopolyGame;
     private Board board;
+    private GameController gameController;
 
     public MonopolyFacade() {
         this.board = new Board();
@@ -21,10 +22,15 @@ public class MonopolyFacade {
             new PlayerLimitValidator()
         );
         this.monopolyGame = new MonopolyGame(gameValidator);
+        this.gameController = new GameController();
     }
 
     public void createGame(int numPlayers, String playerNames, String tokenColors) {
         monopolyGame.createGame(numPlayers, playerNames, tokenColors);
+    }
+
+    public void setAutomaticBuying(boolean auto) {
+        gameController.setAutomaticBuying(auto);
     }
 
     public int getNumberOfPlayers() {

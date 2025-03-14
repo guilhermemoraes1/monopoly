@@ -56,7 +56,10 @@ public class Board {
         places.put(39, new Place("Boardwalk", "indigo", 400, 50, "bank"));
         places.put(40, new Place("Go", "corner", 0, 0, null));
     }
-    
+
+    public Map<Integer, Place> getPlaces() {
+        return places;  // Retorna o mapa com todas as propriedades
+    }
 
     public String getPlaceName(int placeID) {
         return getPlace(placeID).getName();
@@ -96,4 +99,5 @@ public class Board {
         }
         return places.get(placeID);
     }
+
 }

@@ -53,8 +53,8 @@ public class MonopolyGame {
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % numPlayers;
         playerManager.setCurrentPlayerIndex(currentPlayerIndex);
+        gameController.processPlayerTurn(this);
     }
-    
 
     public Set<String> getCommands() {
         return gameController.getCommands().keySet();
@@ -74,5 +74,9 @@ public class MonopolyGame {
 
     public PlayerManager getPlayerManager() {
         return playerManager;
+    }
+
+    public GameController getGameController() {
+        return gameController;
     }
 }

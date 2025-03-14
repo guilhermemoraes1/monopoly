@@ -28,14 +28,26 @@ public class PlayerManager {
         }
     }
 
+    public void removePlayer(Player player) {
+        players.remove(player);  // Remove o jogador da lista
+        System.out.println(player.getName() + " foi removido do jogo.");
+    }
+
     public Player findPlayerByName(String name) {
-        for (Player player : getPlayers()) {
+        for (int i = 0; i < getPlayers().size(); i++) {
+            Player player = getPlayers().get(i);
             if (player.getName().equals(name)) {
-                return player; 
+                // Verifica se o jogador falhou
+                if (player.getPlayerMoney() < 0) {
+                    getPlayers().remove(i);  // Remove o jogador da lista
+                    throw new IllegalArgumentException("Player no longer in the game");
+                }
+                return player;
             }
         }
         throw new IllegalArgumentException("Player doesn't exist");
     }
+    
 
     public void setCurrentPlayerIndex(int index) {
         this.currentPlayerIndex = index;

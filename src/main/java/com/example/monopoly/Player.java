@@ -30,6 +30,14 @@ public class Player {
         return money;
     }
 
+    public void setPlayerDeeds(Set<String> deeds) {
+        this.deeds = deeds;
+    }
+
+    public void addDeed(String deed) {
+        this.deeds.add(deed);
+    }
+
     public int getPlayerPosition() {
         return position;
     }
@@ -38,5 +46,11 @@ public class Player {
         return deeds;
     }
 
-    
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
 }
