@@ -2,6 +2,7 @@ package com.example.monopoly;
 
 import java.util.Set;
 
+import com.example.monopoly.commands.RollCommand;
 import com.example.monopoly.validator.GameValidator;
 import com.example.monopoly.validator.PlayerNameValidator;
 import com.example.monopoly.validator.PlayerLimitValidator;
@@ -11,6 +12,7 @@ public class MonopolyFacade {
     
     private MonopolyGame monopolyGame;
     private Board board;
+    private GameController gameController;
 
     public MonopolyFacade() {
         this.board = new Board();
@@ -20,6 +22,7 @@ public class MonopolyFacade {
             new PlayerLimitValidator()
         );
         this.monopolyGame = new MonopolyGame(gameValidator);
+        this.gameController = new GameController();
     }
 
     public void createGame(int numPlayers, String playerNames, String tokenColors) {
@@ -63,6 +66,11 @@ public class MonopolyFacade {
         Set<String> commands = monopolyGame.getCommands();
         // formatação: {roll,status,quit}
         return "{" + String.join(",", commands) + "}";
+    }
+
+    public void rollDice(int firstDieResult, int secondDieResult) {
+        RollCommand rollCommand = new RollCommand();
+        rollCommand.execute(monopolyGame, monopolyGame.getCurrentPlayer(), firstDieResult, secondDieResult);
     }
 
     public String getPlaceName(int placeID) {
