@@ -2,6 +2,7 @@ package com.example.monopoly.commands;
 
 import com.example.monopoly.Board;
 import com.example.monopoly.MonopolyGame;
+import com.example.monopoly.Place;
 import com.example.monopoly.Player;
 
 public class RollCommand implements Command {
@@ -35,12 +36,17 @@ public class RollCommand implements Command {
 
     private void updatePlayerPosition(MonopolyGame game, Player player, int diceSum) {
         int newPosition = player.getPlayerPosition() + diceSum;
+        boolean passedGo = false;
     
         if (newPosition > 40) {
             newPosition -= 40;
+            passedGo = true;
         }
     
         player.setPosition(newPosition);
+        Board board = game.getGameController().getBoard();
+        Place currentPlace = board.getPlace(newPosition);
+        game.getGameController().handleTurn(game, currentPlace);
         // System.out.println(player.getName() + " agora está na posição " + currentPlace.getName());
     }
 }

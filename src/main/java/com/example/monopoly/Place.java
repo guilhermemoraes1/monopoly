@@ -34,4 +34,8 @@ public class Place {
     public String getOwner() {
         return owner;
     }
+
+    public void setOwner(String newOwner) {
+        this.owner = newOwner;
+    }
 }

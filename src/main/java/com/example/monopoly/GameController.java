@@ -4,6 +4,7 @@ import com.example.monopoly.commands.Command;
 import com.example.monopoly.commands.QuitCommand;
 import com.example.monopoly.commands.RollCommand;
 import com.example.monopoly.commands.StatusCommand;
+import com.example.monopoly.commands.BuyPropertyCommand;  // Importa o comando de compra
 
 import java.util.Map;
 import java.util.LinkedHashMap;
@@ -17,6 +18,7 @@ public class GameController {
         commands.put("roll", new RollCommand());
         commands.put("status", new StatusCommand());
         commands.put("quit", new QuitCommand());
+        // Não adicionamos "buy" no mapa de comandos para não aparecer para o jogador
     }
 
     public void processCommand(String command, MonopolyGame game) {
@@ -37,6 +39,17 @@ public class GameController {
         return commands;
     }
 
+    // Método chamado para a jogada do jogador
+    public void handleTurn(MonopolyGame game, Place currentPlace) {
+        Player currentPlayer = game.getCurrentPlayer();
+        
+        // Lógica para decidir se o jogador pode comprar a propriedade
+        if (currentPlace.getPrice() != 0 && currentPlayer.getPlayerMoney() > currentPlace.getPrice()) {
+            // O sistema chama o comando de compra
+            new BuyPropertyCommand().execute(game, currentPlayer);
+        }
+    }
+
     public void printPlayerMenu(MonopolyGame game) {
         if (!game.getIsGameOn()) {
             System.out.println("The game has ended.");
@@ -45,6 +58,6 @@ public class GameController {
         
         Player currentPlayer = game.getCurrentPlayer();
         System.out.println("\nIt's " + currentPlayer.getName() + "'s turn.");
-        System.out.println("Available commands: " + getCommands().keySet());
+        System.out.println("Available commands: " + getCommands().keySet());  // Não mostra "buy" aqui
     }
 }

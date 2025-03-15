@@ -52,7 +52,16 @@ public class MonopolyFacade {
 
     public String getPlayerDeeds(String playerName) {
         Player player = getPlayerManager().findPlayerByName(playerName);
-        return player.getPlayerDeeds().isEmpty() ? "{}" : player.getPlayerDeeds().toString();
+        Set<String> deeds = player.getPlayerDeeds();
+        
+        // Converte o Set para uma String com a notação de conjunto
+        if (deeds.isEmpty()) {
+            return "{}";
+        }
+
+        // Converte o Set para um String no formato esperado
+        return "{" + String.join(",", deeds) + "}";
+
     }
 
     public String getCurrentPlayer() {
