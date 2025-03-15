@@ -43,12 +43,35 @@ public class GameController {
     public void handleTurn(MonopolyGame game, Place currentPlace) {
         Player currentPlayer = game.getCurrentPlayer();
         
-        // Lógica para decidir se o jogador pode comprar a propriedade
-        if (currentPlace.getPrice() != 0 && currentPlayer.getPlayerMoney() > currentPlace.getPrice()) {
-            // O sistema chama o comando de compra
-            new BuyPropertyCommand().execute(game, currentPlayer);
+        // Verificar o dono da propriedade
+        String owner = currentPlace.getOwner();
+    
+        // Se o dono for o banco, verifica se o jogador pode comprar a propriedade
+        if (owner != null && owner.equals("bank")) {
+            // O banco é o dono da propriedade
+            if (currentPlayer.getPlayerMoney() >= currentPlace.getPrice()) {
+                // Se o jogador tiver dinheiro suficiente, ele compra a propriedade
+                new BuyPropertyCommand().execute(game, currentPlayer);
+            } else {
+                // Se o jogador não tiver dinheiro suficiente, ele paga o aluguel
+                int rent = currentPlace.getRent();
+                currentPlayer.setPlayerMoney(currentPlayer.getPlayerMoney() - rent);
+                // O aluguel vai para o banco, então não há necessidade de uma mudança de proprietário
+                System.out.println(currentPlayer.getName() + " pagou " + rent + " de aluguel ao banco.");
+            }
+        } else if (owner != null && !owner.equals(currentPlayer.getName()) && !owner.equals("bank")) {
+            // Se o dono não for o banco e for outro jogador
+            int rent = currentPlace.getRent();
+            currentPlayer.setPlayerMoney(currentPlayer.getPlayerMoney() - rent);
+    
+            // Encontra o jogador dono da propriedade
+            Player propertyOwner = game.getPlayerManager().findPlayerByName(owner);
+            propertyOwner.setPlayerMoney(propertyOwner.getPlayerMoney() + rent);
+    
+            System.out.println(currentPlayer.getName() + " pagou " + rent + " de aluguel para " + propertyOwner.getName());
         }
     }
+    
 
     public void printPlayerMenu(MonopolyGame game) {
         if (!game.getIsGameOn()) {

@@ -39,7 +39,7 @@ public class RollCommand implements Command {
         boolean passedGo = false;
     
         if (newPosition > 40) {
-            newPosition -= 40;
+            newPosition -= 40; // Volta para a posição inicial, após passar pela casa GO
             passedGo = true;
         }
     
