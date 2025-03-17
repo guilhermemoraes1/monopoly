@@ -17,7 +17,6 @@
                 String command = scanner.nextLine().toLowerCase();
 
                 gameController.processCommand(command, game);
-                game.nextTurn();
             }
         }
     }

@@ -1,99 +1,137 @@
 package com.example.monopoly;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.example.monopoly.casas.Casa;
+import com.example.monopoly.casas.CasaTeste;
+import com.example.monopoly.casas.abstract_factory.CofreComunitarioFactory;
+import com.example.monopoly.casas.abstract_factory.FerroviaFactory;
+import com.example.monopoly.casas.abstract_factory.ImpostoFactory;
+import com.example.monopoly.casas.abstract_factory.PontoDePartidaFactory;
+import com.example.monopoly.casas.abstract_factory.PrisaoFactory;
+import com.example.monopoly.casas.abstract_factory.PropriedadeFactory;
+import com.example.monopoly.casas.abstract_factory.ServicoPublicoFactory;
+import com.example.monopoly.casas.abstract_factory.SorteFactory;
+import com.example.monopoly.casas.abstract_factory.concreta.CofreComunitarioFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.FerroviaFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.ImpostoFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.PontoDePartidaFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.PrisaoFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.PropriedadeFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.ServicoPublicoFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.SorteFactoryConcreta;
+
 public class Board {
 
-    private final int maxPlaceId = 40;
+    private final int maxCasaId = 40;
 
-    private Map<Integer, Place> places;
+    private ArrayList<Casa> casas;
 
     public Board() {
-        places = new HashMap<>();
-        initializePlaces();
+        casas = new ArrayList<>();
+        initializeCasas();
     }
 
-    private void initializePlaces() {
-        places.put(1, new Place("Mediterranean Avenue", "purple", 60, 2, "bank"));
-        places.put(2, new Place("Community Chest 1", "chest", 0, 0, null));
-        places.put(3, new Place("Baltic Avenue", "purple", 60, 4, "bank"));
-        places.put(4, new Place("Income Tax", "tax", 0, 0, null));
-        places.put(5, new Place("Reading Railroad", "railroad", 200, 0, "bank"));
-        places.put(6, new Place("Oriental Avenue", "light blue", 100, 6, "bank"));
-        places.put(7, new Place("Chance 1", "chance", 0, 0, null));
-        places.put(8, new Place("Vermont Avenue", "light blue", 100, 6, "bank"));
-        places.put(9, new Place("Connecticut Avenue", "light blue", 120, 8, "bank"));
-        places.put(10, new Place("Jail - Just Visiting", "corner", 0, 0, null));
-        places.put(11, new Place("St. Charles Place", "pink", 140, 10, "bank"));
-        places.put(12, new Place("Electric Company", "utility", 150, 0, "bank"));
-        places.put(13, new Place("States Avenue", "pink", 140, 10, "bank"));
-        places.put(14, new Place("Virginia Avenue", "pink", 160, 12, "bank"));
-        places.put(15, new Place("Pennsylvania Railroad", "railroad", 200, 0, "bank"));
-        places.put(16, new Place("St. James Place", "orange", 180, 14, "bank"));
-        places.put(17, new Place("Community Chest 2", "chest", 0, 0, null));
-        places.put(18, new Place("Tennessee Avenue", "orange", 180, 14, "bank"));
-        places.put(19, new Place("New York Avenue", "orange", 200, 16, "bank"));
-        places.put(20, new Place("Free Parking", "corner", 0, 0, null));
-        places.put(21, new Place("Kentucky Avenue", "red", 220, 18, "bank"));
-        places.put(22, new Place("Chance 2", "chance", 0, 0, null));
-        places.put(23, new Place("Indiana Avenue", "red", 220, 18, "bank"));
-        places.put(24, new Place("Illinois Avenue", "red", 240, 20, "bank"));
-        places.put(25, new Place("B & O Railroad", "railroad", 200, 0, "bank"));
-        places.put(26, new Place("Atlantic Avenue", "yellow", 260, 22, "bank"));
-        places.put(27, new Place("Ventnor Avenue", "yellow", 260, 22, "bank"));
-        places.put(28, new Place("Water Works", "utility", 150, 0, "bank"));
-        places.put(29, new Place("Marvin Gardens", "yellow", 280, 24, "bank"));
-        places.put(30, new Place("Go To Jail", "corner", 0, 0, null));
-        places.put(31, new Place("Pacific Avenue", "green", 300, 26, "bank"));
-        places.put(32, new Place("North Carolina Avenue", "green", 300, 26, "bank"));
-        places.put(33, new Place("Community Chest 3", "chest", 0, 0, null));
-        places.put(34, new Place("Pennsylvania Avenue", "green", 320, 28, "bank"));
-        places.put(35, new Place("Short Line Railroad", "railroad", 200, 0, "bank"));
-        places.put(36, new Place("Chance 3", "chance", 0, 0, null));
-        places.put(37, new Place("Park Place", "indigo", 350, 35, "bank"));
-        places.put(38, new Place("Luxury Tax", "tax", 0, 0, null));
-        places.put(39, new Place("Boardwalk", "indigo", 400, 50, "bank"));
-        places.put(40, new Place("Go", "corner", 0, 0, null));
+    private void initializeCasas() {
+        PropriedadeFactory propriedadeFactory = new PropriedadeFactoryConcreta();
+        CofreComunitarioFactory cofreComunitarioFactory = new CofreComunitarioFactoryConcreta();
+        FerroviaFactory ferroviaFactory = new FerroviaFactoryConcreta();
+        ServicoPublicoFactory servicoPublicoFactory = new ServicoPublicoFactoryConcreta();
+        SorteFactory sorteFactory = new SorteFactoryConcreta();
+        ImpostoFactory impostoFactory = new ImpostoFactoryConcreta();
+        PrisaoFactory prisaoFactory = new PrisaoFactoryConcreta();
+        PontoDePartidaFactory pontoDePartidaFactory = new PontoDePartidaFactoryConcreta();
+
+        casas.add(propriedadeFactory.criarPropriedade(1, "Mediterranean Avenue",  "roxo",  60,  2));
+        casas.add(cofreComunitarioFactory.criarCofreComunitario(2, "Cofre Comunitário 1"));
+        casas.add(propriedadeFactory.criarPropriedade(3, "Baltic Avenue", "roxo", 60,  4));
+        casas.add(impostoFactory.criarImposto(4, "Imposto de Renda", false));
+        casas.add(ferroviaFactory.criarFerrovia(5, "Reading Railroad",  200, 0));
+        casas.add(propriedadeFactory.criarPropriedade(6, "Oriental Avenue", "ciano", 100,  6));
+        casas.add(sorteFactory.criarSorte(7, "Chance 1"));
+        casas.add(propriedadeFactory.criarPropriedade(8, "Vermont Avenue", "ciano", 100, 6));
+        casas.add(propriedadeFactory.criarPropriedade(9, "Connecticut Avenue", "ciano", 120, 8));
+        casas.add(prisaoFactory.criarPrisao(10, "Prisão: Apenas Visitando",  true));
+        casas.add(propriedadeFactory.criarPropriedade(11, "St. Charles Casa", "rosa", 140, 10));
+        casas.add(servicoPublicoFactory.criarServicoPublico(12, "Companhia Elétrica", 150));
+        casas.add(propriedadeFactory.criarPropriedade(13, "States Avenue",  "rosa", 140, 10));
+        casas.add(propriedadeFactory.criarPropriedade(14, "Virginia Avenue", "rosa", 160, 12));
+        casas.add(ferroviaFactory.criarFerrovia(15, "Pennsylvania Railroad",  200, 0));
+        casas.add(propriedadeFactory.criarPropriedade(16, "St. James Casa", "laranja", 180, 14));
+        casas.add(cofreComunitarioFactory.criarCofreComunitario(17, "Cofre Comunitário 2"));
+        casas.add(propriedadeFactory.criarPropriedade(18, "Tennessee Avenue", "laranja", 180, 14));
+        casas.add(propriedadeFactory.criarPropriedade(19, "New York Avenue", "laranja", 200, 16));
+        casas.add(new CasaTeste(20, "Free Parking"));
+        casas.add(propriedadeFactory.criarPropriedade(21, "Kentucky Avenue", "vermelho", 220, 18));
+        casas.add(sorteFactory.criarSorte(22, "Chance 2"));
+        casas.add(propriedadeFactory.criarPropriedade(23, "Indiana Avenue", "vermelho", 220, 18));
+        casas.add(propriedadeFactory.criarPropriedade(24, "Illinois Avenue", "vermelho", 240, 20));
+        casas.add(ferroviaFactory.criarFerrovia(25, "B & O Railroad", 200, 0));
+        casas.add(propriedadeFactory.criarPropriedade(26, "Atlantic Avenue", "amarelo", 260, 22));
+        casas.add(propriedadeFactory.criarPropriedade(27, "Ventnor Avenue", "amarelo", 260, 22));
+        casas.add(servicoPublicoFactory.criarServicoPublico(28, "Companhia de Água", 150));
+        casas.add(propriedadeFactory.criarPropriedade(29, "Marvin Gardens", "amarelo", 280, 24));
+        casas.add(prisaoFactory.criarPrisao(30, "Vá para Prisão",  false));
+        casas.add(propriedadeFactory.criarPropriedade(31, "Pacific Avenue", "verde", 300, 26));
+        casas.add(propriedadeFactory.criarPropriedade(32, "North Carolina Avenue", "verde", 300, 26));
+        casas.add(cofreComunitarioFactory.criarCofreComunitario(33, "Cofre Comunitário 3"));
+        casas.add(propriedadeFactory.criarPropriedade(34, "Pennsylvania Avenue", "verde", 320, 28));
+        casas.add(ferroviaFactory.criarFerrovia(35, "Short Line", 200, 0));
+        casas.add(sorteFactory.criarSorte(36, "Chance 3"));
+        casas.add(propriedadeFactory.criarPropriedade(37, "Park Casa",  "azul", 350, 35));
+        casas.add(impostoFactory.criarImposto(38, "Imposto de Riqueza", true));
+        casas.add(propriedadeFactory.criarPropriedade(39, "Boardwalk", "azul", 400, 50));
+        casas.add(pontoDePartidaFactory.criarPontoDePartida(40, "Ponto de Partida"));
     }
     
 
-    public String getPlaceName(int placeID) {
-        return getPlace(placeID).getName();
+    public String getCasaName(int placeID) {
+        return getCasa(placeID).getName();
     }
 
-    public String getPlaceGroup(int placeID) {
-        return getPlace(placeID).getGroup();
+    public Casa getCasaNaPosicao(int position) {
+        for (Casa casa : casas) {
+            if (casa.getPosicao() == position) {
+                return casa;
+            }
+        }
+        return null;
     }
 
-    public String getPlaceOwner(int placeID) {
-        Place place = getPlace(placeID);
-        if (place.getOwner() == null) {
+    // public String getCasaGroup(int placeID) {
+    //     return getCasa(placeID).getGroup();
+    // }
+
+    public Player getCasaOwner(int placeID) {
+        Casa place = getCasa(placeID);
+        if (place.getProprietario() == null) {
             throw new IllegalArgumentException("This place can't be owned");
         }
-        return place.getOwner();
+        return place.getProprietario();
     }
 
-    public int getPlacePrice(int placeID) {
-        Place place = getPlace(placeID);
-        if (place.getPrice() == 0) {
-            throw new IllegalArgumentException("This place can't be sold");
-        }
-        return place.getPrice();
-    }
+    // public int getCasaPrice(int placeID) {
+    //     Casa place = getCasa(placeID);
+    //     if (place.getPrice() == 0) {
+    //         throw new IllegalArgumentException("This place can't be sold");
+    //     }
+    //     return place.getPrice();
+    // }
 
-    public int getPropertyRent(int placeID) {
-        Place place = getPlace(placeID);
-        if (place.getRent() == 0) {
-            throw new IllegalArgumentException("This place doesn't have a rent");
-        }
-        return place.getRent();
-    }
+    // public int getPropertyRent(int placeID) {
+    //     Casa place = getCasa(placeID);
+    //     if (place.getRent() == 0) {
+    //         throw new IllegalArgumentException("This place doesn't have a rent");
+    //     }
+    //     return place.getRent();
+    // }
 
-    public Place getPlace(int placeID) {
-        if (placeID < 1 || placeID > maxPlaceId) {
-            throw new IllegalArgumentException("Place doesn't exist");
+    public Casa getCasa(int placeID) {
+        if (placeID < 1 || placeID > maxCasaId) {
+            throw new IllegalArgumentException("Casa doesn't exist");
         }
-        return places.get(placeID);
+        return casas.get(placeID);
     }
 }

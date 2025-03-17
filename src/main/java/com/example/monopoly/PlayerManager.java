@@ -9,7 +9,6 @@ public class PlayerManager {
 
     public PlayerManager() {
         this.players = new ArrayList<>();
-        this.currentPlayerIndex = 0;
     }
 
     public void createPlayers(int numPlayers, String playerNames, String tokenColors) {
@@ -48,4 +47,8 @@ public class PlayerManager {
     public Player getCurrentPlayer() {
         return players.get(currentPlayerIndex);
     }
+
+    public void setCurrentPlayerIndex(int index) {
+        this.currentPlayerIndex = index;
+    }  
 }
