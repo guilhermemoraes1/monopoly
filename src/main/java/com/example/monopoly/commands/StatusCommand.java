@@ -10,6 +10,6 @@ public class StatusCommand implements Command {
         System.out.println("Color: " + player.getPlayerToken());
         System.out.println("Money: " + player.getPlayerMoney());
         System.out.println("Position: " + player.getPlayerPosition());
-        System.out.println("Deeds: " + player.getPlayerDeeds());
+        System.out.println("Deeds: " + player.getDeeds());
     }
 }

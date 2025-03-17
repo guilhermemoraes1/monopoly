@@ -25,7 +25,7 @@ public abstract class Casa {
     public void setProprietario(Player proprietario) {
         this.proprietario = proprietario;
     }
-    public abstract void oferecerCompra(Player player);
-    public abstract void venderPara(Player player);
+    public abstract void offerToBuy(Player player);
+    public abstract void sellTo(Player player);
     public  abstract void executarAcao(Player player);
 }

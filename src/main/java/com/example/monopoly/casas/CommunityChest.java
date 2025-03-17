@@ -12,12 +12,12 @@ public class CommunityChest extends Casa {
 
 
     @Override
-    public void oferecerCompra(Player jogador) {
+    public void offerToBuy(Player player) {
 
     }
 
     @Override
-    public void venderPara(Player jogador) {
+    public void sellTo(Player player) {
 
     }
 

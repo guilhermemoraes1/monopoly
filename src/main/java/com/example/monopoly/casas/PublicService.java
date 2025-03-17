@@ -21,28 +21,28 @@ public class PublicService extends Casa{
     }
 
     @Override
-    public void oferecerCompra(Player jogador) {
+    public void offerToBuy(Player player) {
 
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("O título do serviço " + getName() + " está disponível por $" + getPrice() + ".");
-        System.out.println(jogador.getName() + ", você possui $" + jogador.getPlayerMoney() + ".");
+        System.out.println(player.getName() + ", você possui $" + player.getPlayerMoney() + ".");
 
         System.out.print("Você deseja comprar " + getName() +  " (Sim/Não)? ");
         String resposta = scanner.nextLine();
         if (resposta.equalsIgnoreCase("Sim")) {
-            venderPara(jogador);
+            sellTo(player);
         }
         
 
     }
 
     @Override
-    public void venderPara(Player jogador) {
-        if (jogador.getPlayerMoney() >= getPrice()) {
-            jogador.comprarPublicService(this);
+    public void sellTo(Player player) {
+        if (player.getPlayerMoney() >= getPrice()) {
+            player.comprarPublicService(this);
         } else {
-            System.out.println(jogador.getName() + ", você não tem dinheiro suficiente para comprar esta realestate.");
+            System.out.println(player.getName() + ", você não tem dinheiro suficiente para comprar esta realestate.");
         }
     }
 
@@ -53,17 +53,17 @@ public class PublicService extends Casa{
         if (getProprietario() != null) {
             System.out.println("O serviço público " + getName() + " já possui proprietário.");
 
-            int taxa = getPrice();
+            int fine = getPrice();
 
-            player.diminuirDinheiro(taxa);
-            getProprietario().aumentarDinheiro(taxa);
+            player.decreaseMoney(fine);
+            getProprietario().increaseMoney(fine);
 
-            System.out.println("O jogador " + player.getName() + " pagou a taxa fixa de $" + taxa +
+            System.out.println("O player " + player.getName() + " pagou a fine fixa de $" + fine +
                     " para " + getProprietario().getName());
             System.out.println("Novo saldo: $" + player.getPlayerMoney());
 
         } else {
-            oferecerCompra(player);
+            offerToBuy(player);
         }
     }
 

@@ -31,27 +31,27 @@ public class Railroad extends Casa {
     }
 
     @Override
-    public void oferecerCompra(Player jogador) {
+    public void offerToBuy(Player player) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("A título da ferrovia " + getName() + " está disponível por $" + getPrice() + ".");
-        System.out.println(jogador.getName() + ", você possui $" + jogador.getPlayerMoney() + ".");
+        System.out.println(player.getName() + ", você possui $" + player.getPlayerMoney() + ".");
 
         System.out.print("Você deseja comprar " + getName() +  " (Sim/Não)? ");
         String resposta = scanner.nextLine();
         if (resposta.equalsIgnoreCase("Sim")) {
-            venderPara(jogador);
+            sellTo(player);
         }
         
 
     }
 
     @Override
-    public void venderPara(Player jogador) {
-        if (jogador.getPlayerMoney() >= getPrice()) {
-            jogador.comprarRailroad(this);
+    public void sellTo(Player player) {
+        if (player.getPlayerMoney() >= getPrice()) {
+            player.comprarRailroad(this);
         } else {
-            System.out.println(jogador.getName() + ", você não tem dinheiro suficiente para comprar esta ferrovia.");
+            System.out.println(player.getName() + ", você não tem dinheiro suficiente para comprar esta ferrovia.");
         }
     }
 
@@ -62,17 +62,17 @@ public class Railroad extends Casa {
         if (getProprietario() != null) {
             System.out.println("A ferrovia " + getName() + " já possui proprietário.");
 
-            int taxa = getRace();
+            int fine = getRace();
 
-            player.diminuirDinheiro(taxa);
-            player.aumentarDinheiro(taxa);
+            player.decreaseMoney(fine);
+            player.increaseMoney(fine);
 
-            System.out.println("O jogador " + player.getName() + " pagou o rent de $" + taxa +
+            System.out.println("O player " + player.getName() + " pagou o rent de $" + fine +
                     " para " + player.getName());
             System.out.println("Novo saldo: $" + player.getPlayerMoney());
 
         } else {
-            oferecerCompra(player);
+            offerToBuy(player);
         }
     }
 

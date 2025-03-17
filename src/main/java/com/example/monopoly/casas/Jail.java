@@ -24,11 +24,11 @@ public class Jail extends Casa{
     }
 
     @Override
-    public void oferecerCompra(Player jogador) {
+    public void offerToBuy(Player player) {
 
     }
     @Override
-    public void venderPara(Player jogador) {
+    public void sellTo(Player player) {
 
     }
 
@@ -76,7 +76,7 @@ public class Jail extends Casa{
             if (player.getJogadasSeguidas() == 3) {
 
                 System.out.println("Você não conseguiu sair da prisão após 3 tentativas. Pagou $50.");
-                player.diminuirDinheiro(fineValue);
+                player.decreaseMoney(fineValue);
                 player.resetarJogadas();
             }
         } else {

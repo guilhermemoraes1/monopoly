@@ -9,12 +9,12 @@ public class StartingPoint extends Casa {
     }
 
     @Override
-    public void oferecerCompra(Player player) {
+    public void offerToBuy(Player player) {
 
     }
 
     @Override
-    public void venderPara(Player player) {
+    public void sellTo(Player player) {
 
     }
 

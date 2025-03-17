@@ -12,7 +12,7 @@ public class ComandoPagar implements Comando {
         if (player.getPlayerMoney() >= fineValue) {
 
             System.out.println("Você pagou para sair da prisão!");
-            player.diminuirDinheiro(fineValue);
+            player.decreaseMoney(fineValue);
             player.resetarJogadas();
 
         } else {

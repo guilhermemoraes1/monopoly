@@ -1,11 +1,11 @@
 package com.example.monopoly;
 
-public class Titulo {
+public class Deed {
     private String name;
     private String color;
     private int price;
 
-    public Titulo(String name, String color, int price) {
+    public Deed(String name, String color, int price) {
         this.name = name;
         this.color = color;
         this.price = price;
@@ -33,6 +33,12 @@ public class Titulo {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    // melhorar depois, mas funciona
+    @Override
+    public String toString() {
+        return "Deed{name='" + name + "', price=" + price + "}";
     }
 
 }

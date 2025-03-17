@@ -37,27 +37,27 @@ public class RealEstate extends Casa {
     }
 
     @Override
-    public void oferecerCompra(Player jogador) {
+    public void offerToBuy(Player player) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("A título da propriedade " + getName() + " está disponível por $" + getPrice() + ".");
-        System.out.println(jogador.getName() + ", você possui $" + jogador.getPlayerMoney() + ".");
+        System.out.println(player.getName() + ", você possui $" + player.getPlayerMoney() + ".");
 
         System.out.print("Você deseja comprar " + getName() +  " (Sim/Não)? ");
         String resposta = scanner.nextLine();
         if (resposta.equalsIgnoreCase("Sim")) {
-            venderPara(jogador);
+            sellTo(player);
         }
 
         
     }
 
     @Override
-    public void venderPara(Player jogador) {
-        if (jogador.getPlayerMoney() >= getPrice()) {
-            jogador.comprarRealEstate(this);
+    public void sellTo(Player player) {
+        if (player.getPlayerMoney() >= getPrice()) {
+            player.comprarRealEstate(this);
         } else {
-            System.out.println(jogador.getName() + ", você não tem dinheiro suficiente para comprar esta propriedade.");
+            System.out.println(player.getName() + ", você não tem dinheiro suficiente para comprar esta propriedade.");
         }
     }
 
@@ -68,17 +68,17 @@ public class RealEstate extends Casa {
         if (getProprietario() != null) {
             System.out.println("A propriedade " + getName() + " já possui proprietário.");
 
-            int taxa = getRent();
+            int fine = getRent();
 
-            player.diminuirDinheiro(taxa);
-            getProprietario().aumentarDinheiro(taxa);
+            player.decreaseMoney(fine);
+            getProprietario().increaseMoney(fine);
 
-            System.out.println("O jogador " + player.getName() + " pagou o rent de $" + taxa +
+            System.out.println("O player " + player.getName() + " pagou o rent de $" + fine +
                     " para " + getProprietario().getName());
             System.out.println("Novo saldo: $" + player.getPlayerMoney());
 
         } else {
-            oferecerCompra(player);
+            offerToBuy(player);
         }
     }
 }

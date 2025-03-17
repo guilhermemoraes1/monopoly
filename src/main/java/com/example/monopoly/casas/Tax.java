@@ -3,27 +3,27 @@ package com.example.monopoly.casas;
 import com.example.monopoly.Player;
 
 public class Tax extends Casa{
-    private boolean taxRiqueza;
-    public Tax(int position, String name, boolean taxRiqueza) {
+    private boolean luxuryTax;
+    public Tax(int position, String name, boolean luxuryTax) {
         super(position, name);
-        this.taxRiqueza = taxRiqueza;
+        this.luxuryTax = luxuryTax;
     }
 
-    public boolean isTaxRiqueza() {
-        return taxRiqueza;
+    public boolean isLuxuryTax() {
+        return luxuryTax;
     }
 
-    public void setTaxRiqueza(boolean taxRiqueza) {
-        this.taxRiqueza = taxRiqueza;
-    }
-
-    @Override
-    public void oferecerCompra(Player jogador) {
-
+    public void setLuxuryTax(boolean luxuryTax) {
+        this.luxuryTax = luxuryTax;
     }
 
     @Override
-    public void venderPara(Player jogador) {
+    public void offerToBuy(Player player) {
+
+    }
+
+    @Override
+    public void sellTo(Player player) {
 
     }
 
@@ -31,19 +31,19 @@ public class Tax extends Casa{
     public void executarAcao(Player player) {
         System.out.println(" e o peão avançou para " + getPosition() + " – " + getName());
 
-        int taxRiqueza = 75;
-        int taxRenda = 200;
+        int luxuryTax = 75;
+        int incomeTax = 200;
 
-        if(!isTaxRiqueza()){
+        if(!isLuxuryTax()){
             // pagar tax de renda
-            System.out.println("O jogador " + player.getName() + " pagou $" + taxRenda + " de tax de renda.");
-            player.diminuirDinheiro(taxRenda);
+            System.out.println("O player " + player.getName() + " pagou $" + incomeTax + " de tax de renda.");
+            player.decreaseMoney(incomeTax);
             System.out.println("Novo saldo: $" + player.getPlayerMoney() + "\n");
 
         } else {
             // pagar tax de riqueza
-            System.out.println("O jogador " + player.getName() + " pagou $" + taxRiqueza + " de tax de riqueza.");
-            player.diminuirDinheiro(taxRiqueza);
+            System.out.println("O player " + player.getName() + " pagou $" + luxuryTax + " de tax de riqueza.");
+            player.decreaseMoney(luxuryTax);
             System.out.println("Novo saldo: $" + player.getPlayerMoney() + "\n");
         }
 
