@@ -1,22 +1,22 @@
-    package com.example.monopoly;
+package com.example.monopoly;
 
-    import java.util.Scanner;
+import java.util.Scanner;
 
-    public class GameInteraction {
-        private final GameController gameController;
+public class GameInteraction {
+    private final GameController gameController;
 
-        public GameInteraction(GameController gameController) {
-            this.gameController = gameController;
-        }
+    public GameInteraction(GameController gameController) {
+        this.gameController = gameController;
+    }
 
-        public void startGameLoop(MonopolyGame game, Scanner scanner) {
-            while (game.getIsGameOn()) {
-                gameController.printPlayerMenu(game);
+    public void startGameLoop(MonopolyGame game, Scanner scanner) {
+        while (game.getIsGameOn()) {
+            gameController.printPlayerMenu(game);
 
-                System.out.print("Enter command: ");
-                String command = scanner.nextLine().toLowerCase();
+            System.out.print("Enter command: ");
+            String command = scanner.nextLine().toLowerCase();
 
-                gameController.processCommand(command, game);
-            }
+            gameController.processCommand(command, game);
         }
     }
+}

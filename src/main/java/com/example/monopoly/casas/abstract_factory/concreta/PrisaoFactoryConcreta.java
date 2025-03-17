@@ -5,7 +5,7 @@ import com.example.monopoly.casas.abstract_factory.PrisaoFactory;
 
 public class PrisaoFactoryConcreta implements PrisaoFactory {
     @Override
-    public Prisao criarPrisao(int posicao, String nome, boolean visitandoPrisao) {
+    public Prisao createPrisao(int posicao, String nome, boolean visitandoPrisao) {
         return new Prisao(posicao, nome, visitandoPrisao);
     }
 }

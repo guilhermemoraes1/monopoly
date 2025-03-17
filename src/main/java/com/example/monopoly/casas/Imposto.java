@@ -28,7 +28,7 @@ public class Imposto extends Casa{
     }
 
     @Override
-    public void executarAcao(Player peca) {
+    public void executarAcao(Player player) {
         System.out.println(" e o peão avançou para " + getPosicao() + " – " + getName());
 
         int impostoRiqueza = 75;
@@ -36,15 +36,15 @@ public class Imposto extends Casa{
 
         if(!isImpostoRiqueza()){
             // pagar imposto de renda
-            System.out.println("O jogador " + peca.getName() + " pagou $" + impostoRenda + " de imposto de renda.");
-            peca.diminuirDinheiro(impostoRenda);
-            System.out.println("Novo saldo: $" + peca.getPlayerMoney() + "\n");
+            System.out.println("O jogador " + player.getName() + " pagou $" + impostoRenda + " de imposto de renda.");
+            player.diminuirDinheiro(impostoRenda);
+            System.out.println("Novo saldo: $" + player.getPlayerMoney() + "\n");
 
         } else {
             // pagar imposto de riqueza
-            System.out.println("O jogador " + peca.getName() + " pagou $" + impostoRiqueza + " de imposto de riqueza.");
-            peca.diminuirDinheiro(impostoRiqueza);
-            System.out.println("Novo saldo: $" + peca.getPlayerMoney() + "\n");
+            System.out.println("O jogador " + player.getName() + " pagou $" + impostoRiqueza + " de imposto de riqueza.");
+            player.diminuirDinheiro(impostoRiqueza);
+            System.out.println("Novo saldo: $" + player.getPlayerMoney() + "\n");
         }
 
     }

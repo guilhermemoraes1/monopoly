@@ -62,7 +62,7 @@ public class Propriedade extends Casa {
     }
 
     @Override
-    public void executarAcao(Player peca) {
+    public void executarAcao(Player player) {
         System.out.println(" e o peão avançou para " + getPosicao() + " – " + getName());
 
         if (getProprietario() != null) {
@@ -70,15 +70,15 @@ public class Propriedade extends Casa {
 
             int taxa = getAluguel();
 
-            peca.diminuirDinheiro(taxa);
+            player.diminuirDinheiro(taxa);
             getProprietario().aumentarDinheiro(taxa);
 
-            System.out.println("O jogador " + peca.getName() + " pagou o aluguel de $" + taxa +
+            System.out.println("O jogador " + player.getName() + " pagou o aluguel de $" + taxa +
                     " para " + getProprietario().getName());
-            System.out.println("Novo saldo: $" + peca.getPlayerMoney());
+            System.out.println("Novo saldo: $" + player.getPlayerMoney());
 
         } else {
-            oferecerCompra(peca);
+            oferecerCompra(player);
         }
     }
 }

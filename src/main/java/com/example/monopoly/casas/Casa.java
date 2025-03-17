@@ -27,5 +27,5 @@ public abstract class Casa {
     }
     public abstract void oferecerCompra(Player player);
     public abstract void venderPara(Player player);
-    public  abstract void executarAcao(Player peca);
+    public  abstract void executarAcao(Player player);
 }

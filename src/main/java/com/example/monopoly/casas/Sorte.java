@@ -20,8 +20,8 @@ public class Sorte extends Casa {
     }
 
     @Override
-    public void executarAcao(Player peca) {
-        System.out.println(" e o peão avançou para " + peca.getPlayerPosition() + " – " + peca.getName()  + ".");
+    public void executarAcao(Player player) {
+        System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName()  + ".");
         System.out.println("Tirou carta de Chance");
 
     }

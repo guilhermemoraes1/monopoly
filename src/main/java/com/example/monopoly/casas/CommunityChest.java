@@ -3,10 +3,10 @@ package com.example.monopoly.casas;
 
 import com.example.monopoly.Player;
 
-public class CofreComunitario extends Casa {
+public class CommunityChest extends Casa {
 
 
-    public CofreComunitario(int posicao, String nome){
+    public CommunityChest(int posicao, String nome){
         super(posicao, nome);
     }
 
@@ -23,6 +23,6 @@ public class CofreComunitario extends Casa {
 
     public void executarAcao(Player player) {
         System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName() + ".");
-        System.out.println("Tirou carta de CofreCOmunitario");
+        System.out.println("Tirou carta de CommunityChest");
     }
 }

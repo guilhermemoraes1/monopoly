@@ -6,5 +6,5 @@ import com.example.monopoly.Player;
 
 public interface Comando {
     // Uso do padrão comportamental 'Command' para tratar os comandos da classe Prisão
-    void executar(Player peca, Scanner scanner);
+    void executar(Player player, Scanner scanner);
 }

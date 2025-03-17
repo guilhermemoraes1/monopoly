@@ -6,8 +6,8 @@ import com.example.monopoly.Player;
 
 public class ComandoCarta implements Comando{
     @Override
-    public void executar(Player peca, Scanner scanner) {
+    public void executar(Player player, Scanner scanner) {
         System.out.println("Você usou uma carta para sair da prisão!");
-        peca.resetarJogadas();
+        player.resetarJogadas();
     }
 }

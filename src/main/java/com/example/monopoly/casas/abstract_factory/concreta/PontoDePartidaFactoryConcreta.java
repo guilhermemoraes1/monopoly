@@ -5,7 +5,7 @@ import com.example.monopoly.casas.abstract_factory.PontoDePartidaFactory;
 
 public class PontoDePartidaFactoryConcreta implements PontoDePartidaFactory {
     @Override
-    public PontoDePartida criarPontoDePartida(int posicao, String nome) {
+    public PontoDePartida createPontoDePartida(int posicao, String nome) {
         return new PontoDePartida(posicao, nome);
     }
 }

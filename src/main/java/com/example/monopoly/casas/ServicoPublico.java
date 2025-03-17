@@ -47,23 +47,23 @@ public class ServicoPublico extends Casa{
     }
 
     @Override
-    public void executarAcao(Player peca) {
-        System.out.println(" e o peão avançou para " + peca.getPlayerPosition() + " – " + peca.getName());
+    public void executarAcao(Player player) {
+        System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName());
 
         if (getProprietario() != null) {
             System.out.println("O serviço público " + getName() + " já possui proprietário.");
 
             int taxa = getPreco();
 
-            peca.diminuirDinheiro(taxa);
+            player.diminuirDinheiro(taxa);
             getProprietario().aumentarDinheiro(taxa);
 
-            System.out.println("O jogador " + peca.getName() + " pagou a taxa fixa de $" + taxa +
+            System.out.println("O jogador " + player.getName() + " pagou a taxa fixa de $" + taxa +
                     " para " + getProprietario().getName());
-            System.out.println("Novo saldo: $" + peca.getPlayerMoney());
+            System.out.println("Novo saldo: $" + player.getPlayerMoney());
 
         } else {
-            oferecerCompra(peca);
+            oferecerCompra(player);
         }
     }
 
