@@ -9,12 +9,12 @@ public class ComandoJogar implements Comando {
     @Override
     public void executar(Player player, Scanner scanner) {
 
-        int dado1 = (int) (Math.random() * 6) + 1; 
-        int dado2 = (int) (Math.random() * 6) + 1; 
+        int dice1 = (int) (Math.random() * 6) + 1; 
+        int dice2 = (int) (Math.random() * 6) + 1; 
 
-        System.out.println("\nO jogador " + player.getName() + " tirou " + dado1 + "," + dado2);
+        System.out.println("\nO jogador " + player.getName() + " tirou " + dice1 + "," + dice2);
 
-        if (dado1 == dado2) {
+        if (dice1 == dice2) {
 
             System.out.println("Você saiu da prisão!\n");
             player.resetarJogadas();

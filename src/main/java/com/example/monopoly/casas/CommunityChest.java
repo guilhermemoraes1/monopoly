@@ -6,8 +6,8 @@ import com.example.monopoly.Player;
 public class CommunityChest extends Casa {
 
 
-    public CommunityChest(int posicao, String nome){
-        super(posicao, nome);
+    public CommunityChest(int position, String name){
+        super(position, name);
     }
 
 

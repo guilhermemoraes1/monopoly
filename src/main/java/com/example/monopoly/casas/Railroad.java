@@ -4,37 +4,37 @@ import com.example.monopoly.Player;
 
 import java.util.Scanner;
 
-public class Ferrovia extends Casa {
-    private int preco;
-    private int corrida;
+public class Railroad extends Casa {
+    private int price;
+    private int race;
 
-    public Ferrovia(int posicao, String nome, int preco, int corrida) {
-        super(posicao, nome);
-        this.preco = preco;
-        this.corrida = corrida;
+    public Railroad(int position, String name, int price, int race) {
+        super(position, name);
+        this.price = price;
+        this.race = race;
 
     }
-    public int getPreco() {
-        return preco;
+    public int getPrice() {
+        return price;
     }
 
-    public void setPreco(int preco) {
-        this.preco = preco;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public int getCorrida() {
-        return corrida;
+    public int getRace() {
+        return race;
     }
 
-    public void setCorrida(int corrida) {
-        this.corrida = corrida;
+    public void setRace(int race) {
+        this.race = race;
     }
 
     @Override
     public void oferecerCompra(Player jogador) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("A título da ferrovia " + getName() + " está disponível por $" + getPreco() + ".");
+        System.out.println("A título da ferrovia " + getName() + " está disponível por $" + getPrice() + ".");
         System.out.println(jogador.getName() + ", você possui $" + jogador.getPlayerMoney() + ".");
 
         System.out.print("Você deseja comprar " + getName() +  " (Sim/Não)? ");
@@ -48,8 +48,8 @@ public class Ferrovia extends Casa {
 
     @Override
     public void venderPara(Player jogador) {
-        if (jogador.getPlayerMoney() >= getPreco()) {
-            jogador.comprarFerrovia(this);
+        if (jogador.getPlayerMoney() >= getPrice()) {
+            jogador.comprarRailroad(this);
         } else {
             System.out.println(jogador.getName() + ", você não tem dinheiro suficiente para comprar esta ferrovia.");
         }
@@ -57,17 +57,17 @@ public class Ferrovia extends Casa {
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançou para " + getPosicao() + " – " + getName());
+        System.out.println(" e o peão avançou para " + getPosition() + " – " + getName());
 
         if (getProprietario() != null) {
             System.out.println("A ferrovia " + getName() + " já possui proprietário.");
 
-            int taxa = getCorrida();
+            int taxa = getRace();
 
             player.diminuirDinheiro(taxa);
             player.aumentarDinheiro(taxa);
 
-            System.out.println("O jogador " + player.getName() + " pagou o aluguel de $" + taxa +
+            System.out.println("O jogador " + player.getName() + " pagou o rent de $" + taxa +
                     " para " + player.getName());
             System.out.println("Novo saldo: $" + player.getPlayerMoney());
 

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.example.monopoly.casas.Ferrovia;
-import com.example.monopoly.casas.Propriedade;
-import com.example.monopoly.casas.ServicoPublico;
+import com.example.monopoly.casas.Railroad;
+import com.example.monopoly.casas.RealEstate;
+import com.example.monopoly.casas.PublicService;
 
 public class Player {
     private String name;
@@ -59,35 +59,35 @@ public class Player {
         money += valor;
     }
 
-    public void comprarPropriedade(Propriedade propriedade) {
-        if (money >= propriedade.getPreco()) {
-            setPlayerMoney(money -= propriedade.getPreco());
-            propriedade.setProprietario(this);
+    public void comprarRealEstate(RealEstate realestate) {
+        if (money >= realestate.getPrice()) {
+            setPlayerMoney(money -= realestate.getPrice());
+            realestate.setProprietario(this);
 
-            adicionarTitulo(new Titulo(propriedade.getName(), propriedade.getGrupo(), propriedade.getPreco()));
-            System.out.println(getName() + " comprou a propriedade " + propriedade.getName() + " por $" + propriedade.getPreco() + ".");
+            adicionarTitulo(new Titulo(realestate.getName(), realestate.getGrupo(), realestate.getPrice()));
+            System.out.println(getName() + " comprou a realestate " + realestate.getName() + " por $" + realestate.getPrice() + ".");
         } else {
-            System.out.println(getName() + ", você não tem dinheiro suficiente para comprar esta propriedade.");
+            System.out.println(getName() + ", você não tem dinheiro suficiente para comprar esta realestate.");
         }
     }
 
-    public void comprarFerrovia(Ferrovia ferrovia) {
-        if (money >= ferrovia.getPreco()) {
-            setPlayerMoney(money -= ferrovia.getPreco());
+    public void comprarRailroad(Railroad railroad) {
+        if (money >= railroad.getPrice()) {
+            setPlayerMoney(money -= railroad.getPrice());
 
-            adicionarTitulo(new Titulo(ferrovia.getName(), " ", ferrovia.getPreco()));
-            System.out.println(getName() + " comprou a ferrovia " + ferrovia.getName() + " por $" + ferrovia.getPreco() + ".");
+            adicionarTitulo(new Titulo(railroad.getName(), " ", railroad.getPrice()));
+            System.out.println(getName() + " comprou a railroad " + railroad.getName() + " por $" + railroad.getPrice() + ".");
         } else {
-            System.out.println(getName() + ", você não tem dinheiro suficiente para comprar esta ferrovia.");
+            System.out.println(getName() + ", você não tem dinheiro suficiente para comprar esta railroad.");
         }
     }
 
-    public void comprarServicoPublico(ServicoPublico servicoPublico){
-        if(money >= servicoPublico.getPreco()){
-            setPlayerMoney(money -= servicoPublico.getPreco());
+    public void comprarPublicService(PublicService PublicService){
+        if(money >= PublicService.getPrice()){
+            setPlayerMoney(money -= PublicService.getPrice());
 
-            adicionarTitulo(new Titulo(servicoPublico.getName(), " ", servicoPublico.getPreco()));
-            System.out.println(getName() + " comprou o seviço público " + servicoPublico.getName() + " por $" + servicoPublico.getPreco() + ".");
+            adicionarTitulo(new Titulo(PublicService.getName(), " ", PublicService.getPrice()));
+            System.out.println(getName() + " comprou o seviço público " + PublicService.getName() + " por $" + PublicService.getPrice() + ".");
         } else {
             System.out.println(getName() + ", você não tem dinheiro suficiente para comprar este serviço.");
         }

@@ -3,21 +3,21 @@ package com.example.monopoly.casas;
 import com.example.monopoly.Player;
 
 public abstract class Casa {
-    private int posicao;
-    private String nome;
+    private int position;
+    private String name;
     private Player proprietario;
 
-    public Casa(int posicao, String nome){
-        this.posicao = posicao;
-        this.nome = nome;
+    public Casa(int position, String name){
+        this.position = position;
+        this.name = name;
         this.proprietario = null;
     }
 
     public String getName(){
-        return nome;
+        return name;
     }
-    public int getPosicao(){
-        return posicao;
+    public int getPosition(){
+        return position;
     }
     public Player getProprietario() {
         return proprietario;

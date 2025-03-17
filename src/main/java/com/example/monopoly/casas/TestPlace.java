@@ -2,9 +2,9 @@ package com.example.monopoly.casas;
 
 import com.example.monopoly.Player;
 
-public class CasaTeste extends Casa{
-    public CasaTeste(int posicao, String nome) {
-        super(posicao, nome);
+public class TestPlace extends Casa{
+    public TestPlace(int position, String name) {
+        super(position, name);
     }
 
     @Override

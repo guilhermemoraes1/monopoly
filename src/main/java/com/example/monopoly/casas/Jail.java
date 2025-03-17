@@ -9,18 +9,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Prisao extends Casa{
-    private boolean visitandoPrisao;
+public class Jail extends Casa{
+    private boolean visitingJail;
     private Map<String, Comando> comandos;
 
-    public Prisao(int posicao, String nome, boolean visitandoPrisao) {
-        super(posicao, nome);
-        this.visitandoPrisao = visitandoPrisao;
+    public Jail(int position, String name, boolean visitingJail) {
+        super(position, name);
+        this.visitingJail = visitingJail;
         inicializarComandos();
     }
 
-    public boolean isVisitandoPrisao() {
-        return visitandoPrisao;
+    public boolean isVisitingJail() {
+        return visitingJail;
     }
 
     @Override
@@ -49,11 +49,11 @@ public class Prisao extends Casa{
     public void executarAcao(Player player) {
         System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName());
 
-        if (!isVisitandoPrisao()) {
+        if (!isVisitingJail()) {
             System.out.println(" " + player.getName() + " está na prisão.");
 
             Scanner scanner = new Scanner(System.in);
-            int valorFianca = 50;
+            int fineValue = 50;
 
             while (player.getJogadasSeguidas() < 3) {
                 System.out.println("Comandos disponíveis: [pagar][carta][jogar][status][sair]");
@@ -68,7 +68,7 @@ public class Prisao extends Casa{
                     System.out.println("Comando inválido. Tente novamente.");
                 }
 
-                if (player.getPlayerMoney() >= valorFianca || player.getJogadasSeguidas() == 0) {
+                if (player.getPlayerMoney() >= fineValue || player.getJogadasSeguidas() == 0) {
                     break;
                 }
             }
@@ -76,7 +76,7 @@ public class Prisao extends Casa{
             if (player.getJogadasSeguidas() == 3) {
 
                 System.out.println("Você não conseguiu sair da prisão após 3 tentativas. Pagou $50.");
-                player.diminuirDinheiro(valorFianca);
+                player.diminuirDinheiro(fineValue);
                 player.resetarJogadas();
             }
         } else {

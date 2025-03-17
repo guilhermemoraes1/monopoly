@@ -9,9 +9,9 @@ public class ComandoSair implements Comando {
     public void executar(Player player, Scanner scanner) {
 
         System.out.print("\nVocê tem certeza de que quer sair (Sim/Não)? ");
-        String confirmacao = scanner.nextLine();
+        String confirmation = scanner.nextLine();
 
-        if ("Sim".equalsIgnoreCase(confirmacao)) {
+        if ("Sim".equalsIgnoreCase(confirmation)) {
 
             System.out.println("\nAté a próxima!");
             System.exit(0);

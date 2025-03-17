@@ -4,5 +4,5 @@ import com.example.monopoly.casas.CommunityChest;
 
 public interface CommunityChestFactory {
 
-    CommunityChest createCommunityChest(int posicao, String nome);
+    CommunityChest createCommunityChest(int position, String name);
 }

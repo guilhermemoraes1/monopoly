@@ -5,7 +5,7 @@ import com.example.monopoly.casas.abstract_factory.CommunityChestFactory;
 
 public class CommunityChestFactoryConcreta implements CommunityChestFactory {
     @Override
-    public CommunityChest createCommunityChest(int posicao, String nome) {
-        return new CommunityChest(posicao, nome);
+    public CommunityChest createCommunityChest(int position, String name) {
+        return new CommunityChest(position, name);
     }
 }

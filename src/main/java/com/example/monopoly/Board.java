@@ -5,23 +5,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.example.monopoly.casas.Casa;
-import com.example.monopoly.casas.CasaTeste;
+import com.example.monopoly.casas.TestPlace;
 import com.example.monopoly.casas.abstract_factory.CommunityChestFactory;
-import com.example.monopoly.casas.abstract_factory.FerroviaFactory;
-import com.example.monopoly.casas.abstract_factory.ImpostoFactory;
-import com.example.monopoly.casas.abstract_factory.PontoDePartidaFactory;
-import com.example.monopoly.casas.abstract_factory.PrisaoFactory;
-import com.example.monopoly.casas.abstract_factory.PropriedadeFactory;
-import com.example.monopoly.casas.abstract_factory.ServicoPublicoFactory;
-import com.example.monopoly.casas.abstract_factory.SorteFactory;
+import com.example.monopoly.casas.abstract_factory.RailroadFactory;
+import com.example.monopoly.casas.abstract_factory.TaxFactory;
+import com.example.monopoly.casas.abstract_factory.StartingPointFactory;
+import com.example.monopoly.casas.abstract_factory.JailFactory;
+import com.example.monopoly.casas.abstract_factory.RealEstateFactory;
+import com.example.monopoly.casas.abstract_factory.PublicServiceFactory;
+import com.example.monopoly.casas.abstract_factory.ChanceFactory;
 import com.example.monopoly.casas.abstract_factory.concreta.CommunityChestFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.FerroviaFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.ImpostoFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.PontoDePartidaFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.PrisaoFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.PropriedadeFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.ServicoPublicoFactoryConcreta;
-import com.example.monopoly.casas.abstract_factory.concreta.SorteFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.RailroadFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.TaxFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.StartingPointFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.JailFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.RealEstateFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.PublicServiceFactoryConcreta;
+import com.example.monopoly.casas.abstract_factory.concreta.ChanceFactoryConcreta;
 
 public class Board {
 
@@ -35,55 +35,55 @@ public class Board {
     }
 
     private void initializeCasas() {
-        PropriedadeFactory propriedadeFactory = new PropriedadeFactoryConcreta();
+        RealEstateFactory realestateFactory = new RealEstateFactoryConcreta();
         CommunityChestFactory communityChestFactory = new CommunityChestFactoryConcreta();
-        FerroviaFactory ferroviaFactory = new FerroviaFactoryConcreta();
-        ServicoPublicoFactory servicoPublicoFactory = new ServicoPublicoFactoryConcreta();
-        SorteFactory sorteFactory = new SorteFactoryConcreta();
-        ImpostoFactory impostoFactory = new ImpostoFactoryConcreta();
-        PrisaoFactory prisaoFactory = new PrisaoFactoryConcreta();
-        PontoDePartidaFactory pontoDePartidaFactory = new PontoDePartidaFactoryConcreta();
+        RailroadFactory railroadFactory = new RailroadFactoryConcreta();
+        PublicServiceFactory publicServiceFactory = new PublicServiceFactoryConcreta();
+        ChanceFactory chanceFactory = new ChanceFactoryConcreta();
+        TaxFactory taxFactory = new TaxFactoryConcreta();
+        JailFactory jailFactory = new JailFactoryConcreta();
+        StartingPointFactory startingPointFactory = new StartingPointFactoryConcreta();
 
-        casas.add(propriedadeFactory.createPropriedade(1, "Mediterranean Avenue",  "roxo",  60,  2));
+        casas.add(realestateFactory.createRealEstate(1, "Mediterranean Avenue",  "roxo",  60,  2));
         casas.add(communityChestFactory.createCommunityChest(2, "Cofre Comunitário 1"));
-        casas.add(propriedadeFactory.createPropriedade(3, "Baltic Avenue", "roxo", 60,  4));
-        casas.add(impostoFactory.createImposto(4, "Imposto de Renda", false));
-        casas.add(ferroviaFactory.createFerrovia(5, "Reading Railroad",  200, 0));
-        casas.add(propriedadeFactory.createPropriedade(6, "Oriental Avenue", "ciano", 100,  6));
-        casas.add(sorteFactory.createSorte(7, "Chance 1"));
-        casas.add(propriedadeFactory.createPropriedade(8, "Vermont Avenue", "ciano", 100, 6));
-        casas.add(propriedadeFactory.createPropriedade(9, "Connecticut Avenue", "ciano", 120, 8));
-        casas.add(prisaoFactory.createPrisao(10, "Prisão: Apenas Visitando",  true));
-        casas.add(propriedadeFactory.createPropriedade(11, "St. Charles Casa", "rosa", 140, 10));
-        casas.add(servicoPublicoFactory.createServicoPublico(12, "Companhia Elétrica", 150));
-        casas.add(propriedadeFactory.createPropriedade(13, "States Avenue",  "rosa", 140, 10));
-        casas.add(propriedadeFactory.createPropriedade(14, "Virginia Avenue", "rosa", 160, 12));
-        casas.add(ferroviaFactory.createFerrovia(15, "Pennsylvania Railroad",  200, 0));
-        casas.add(propriedadeFactory.createPropriedade(16, "St. James Casa", "laranja", 180, 14));
+        casas.add(realestateFactory.createRealEstate(3, "Baltic Avenue", "roxo", 60,  4));
+        casas.add(taxFactory.createTax(4, "Tax de Renda", false));
+        casas.add(railroadFactory.createRailroad(5, "Reading Railroad",  200, 0));
+        casas.add(realestateFactory.createRealEstate(6, "Oriental Avenue", "ciano", 100,  6));
+        casas.add(chanceFactory.createChance(7, "Chance 1"));
+        casas.add(realestateFactory.createRealEstate(8, "Vermont Avenue", "ciano", 100, 6));
+        casas.add(realestateFactory.createRealEstate(9, "Connecticut Avenue", "ciano", 120, 8));
+        casas.add(jailFactory.createJail(10, "Prisão: Apenas Visitando",  true));
+        casas.add(realestateFactory.createRealEstate(11, "St. Charles Casa", "rosa", 140, 10));
+        casas.add(publicServiceFactory.createPublicService(12, "Companhia Elétrica", 150));
+        casas.add(realestateFactory.createRealEstate(13, "States Avenue",  "rosa", 140, 10));
+        casas.add(realestateFactory.createRealEstate(14, "Virginia Avenue", "rosa", 160, 12));
+        casas.add(railroadFactory.createRailroad(15, "Pennsylvania Railroad",  200, 0));
+        casas.add(realestateFactory.createRealEstate(16, "St. James Casa", "laranja", 180, 14));
         casas.add(communityChestFactory.createCommunityChest(17, "Cofre Comunitário 2"));
-        casas.add(propriedadeFactory.createPropriedade(18, "Tennessee Avenue", "laranja", 180, 14));
-        casas.add(propriedadeFactory.createPropriedade(19, "New York Avenue", "laranja", 200, 16));
-        casas.add(new CasaTeste(20, "Free Parking"));
-        casas.add(propriedadeFactory.createPropriedade(21, "Kentucky Avenue", "vermelho", 220, 18));
-        casas.add(sorteFactory.createSorte(22, "Chance 2"));
-        casas.add(propriedadeFactory.createPropriedade(23, "Indiana Avenue", "vermelho", 220, 18));
-        casas.add(propriedadeFactory.createPropriedade(24, "Illinois Avenue", "vermelho", 240, 20));
-        casas.add(ferroviaFactory.createFerrovia(25, "B & O Railroad", 200, 0));
-        casas.add(propriedadeFactory.createPropriedade(26, "Atlantic Avenue", "amarelo", 260, 22));
-        casas.add(propriedadeFactory.createPropriedade(27, "Ventnor Avenue", "amarelo", 260, 22));
-        casas.add(servicoPublicoFactory.createServicoPublico(28, "Companhia de Água", 150));
-        casas.add(propriedadeFactory.createPropriedade(29, "Marvin Gardens", "amarelo", 280, 24));
-        casas.add(prisaoFactory.createPrisao(30, "Vá para Prisão",  false));
-        casas.add(propriedadeFactory.createPropriedade(31, "Pacific Avenue", "verde", 300, 26));
-        casas.add(propriedadeFactory.createPropriedade(32, "North Carolina Avenue", "verde", 300, 26));
+        casas.add(realestateFactory.createRealEstate(18, "Tennessee Avenue", "laranja", 180, 14));
+        casas.add(realestateFactory.createRealEstate(19, "New York Avenue", "laranja", 200, 16));
+        casas.add(new TestPlace(20, "Free Parking"));
+        casas.add(realestateFactory.createRealEstate(21, "Kentucky Avenue", "vermelho", 220, 18));
+        casas.add(chanceFactory.createChance(22, "Chance 2"));
+        casas.add(realestateFactory.createRealEstate(23, "Indiana Avenue", "vermelho", 220, 18));
+        casas.add(realestateFactory.createRealEstate(24, "Illinois Avenue", "vermelho", 240, 20));
+        casas.add(railroadFactory.createRailroad(25, "B & O Railroad", 200, 0));
+        casas.add(realestateFactory.createRealEstate(26, "Atlantic Avenue", "amarelo", 260, 22));
+        casas.add(realestateFactory.createRealEstate(27, "Ventnor Avenue", "amarelo", 260, 22));
+        casas.add(publicServiceFactory.createPublicService(28, "Companhia de Água", 150));
+        casas.add(realestateFactory.createRealEstate(29, "Marvin Gardens", "amarelo", 280, 24));
+        casas.add(jailFactory.createJail(30, "Vá para Prisão",  false));
+        casas.add(realestateFactory.createRealEstate(31, "Pacific Avenue", "verde", 300, 26));
+        casas.add(realestateFactory.createRealEstate(32, "North Carolina Avenue", "verde", 300, 26));
         casas.add(communityChestFactory.createCommunityChest(33, "Cofre Comunitário 3"));
-        casas.add(propriedadeFactory.createPropriedade(34, "Pennsylvania Avenue", "verde", 320, 28));
-        casas.add(ferroviaFactory.createFerrovia(35, "Short Line", 200, 0));
-        casas.add(sorteFactory.createSorte(36, "Chance 3"));
-        casas.add(propriedadeFactory.createPropriedade(37, "Park Casa",  "azul", 350, 35));
-        casas.add(impostoFactory.createImposto(38, "Imposto de Riqueza", true));
-        casas.add(propriedadeFactory.createPropriedade(39, "Boardwalk", "azul", 400, 50));
-        casas.add(pontoDePartidaFactory.createPontoDePartida(40, "Ponto de Partida"));
+        casas.add(realestateFactory.createRealEstate(34, "Pennsylvania Avenue", "verde", 320, 28));
+        casas.add(railroadFactory.createRailroad(35, "Short Line", 200, 0));
+        casas.add(chanceFactory.createChance(36, "Chance 3"));
+        casas.add(realestateFactory.createRealEstate(37, "Park Casa",  "azul", 350, 35));
+        casas.add(taxFactory.createTax(38, "Tax de Riqueza", true));
+        casas.add(realestateFactory.createRealEstate(39, "Boardwalk", "azul", 400, 50));
+        casas.add(startingPointFactory.createStartingPoint(40, "Ponto de Partida"));
     }
     
 
@@ -91,9 +91,9 @@ public class Board {
         return getCasa(placeID).getName();
     }
 
-    public Casa getCasaNaPosicao(int position) {
+    public Casa getCasaNaPosition(int position) {
         for (Casa casa : casas) {
-            if (casa.getPosicao() == position) {
+            if (casa.getPosition() == position) {
                 return casa;
             }
         }

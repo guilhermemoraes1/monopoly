@@ -19,13 +19,13 @@ public class RollCommand implements Command {
 
         player.mover(diceSum);
 
-        int novaPosicao = player.getPlayerPosition();
-        if (novaPosicao > 40) {
-            novaPosicao -= 40;
+        int novaPosition = player.getPlayerPosition();
+        if (novaPosition > 40) {
+            novaPosition -= 40;
         }
 
         Board board = game.getBoard();
-        Casa casaAtual = board.getCasaNaPosicao(novaPosicao);
+        Casa casaAtual = board.getCasaNaPosition(novaPosition);
         casaAtual.executarAcao(player);
         game.nextTurn();
     }

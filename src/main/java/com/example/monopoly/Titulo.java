@@ -1,38 +1,38 @@
 package com.example.monopoly;
 
 public class Titulo {
-    private String nome;
-    private String cor;
-    private int preco;
+    private String name;
+    private String color;
+    private int price;
 
-    public Titulo(String nome, String cor, int preco) {
-        this.nome = nome;
-        this.cor = cor;
-        this.preco = preco;
+    public Titulo(String name, String color, int price) {
+        this.name = name;
+        this.color = color;
+        this.price = price;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getCor() {
-        return cor;
+    public String getColor() {
+        return color;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public int getPreco() {
-        return preco;
+    public int getPrice() {
+        return price;
     }
 
-    public void setPreco(int preco) {
-        this.preco = preco;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
 }

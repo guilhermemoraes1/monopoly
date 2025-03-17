@@ -7,12 +7,12 @@ import com.example.monopoly.Player;
 public class ComandoPagar implements Comando {
     @Override
     public void executar(Player player, Scanner scanner) {
-        int valorFianca = 50;
+        int fineValue = 50;
 
-        if (player.getPlayerMoney() >= valorFianca) {
+        if (player.getPlayerMoney() >= fineValue) {
 
             System.out.println("Você pagou para sair da prisão!");
-            player.diminuirDinheiro(valorFianca);
+            player.diminuirDinheiro(fineValue);
             player.resetarJogadas();
 
         } else {
