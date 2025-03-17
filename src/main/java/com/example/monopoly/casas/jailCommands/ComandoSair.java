@@ -1,12 +1,14 @@
-package com.example.monopoly.casas.command;
-
-import com.example.monopoly.Player;
+package com.example.monopoly.casas.jailCommands;
 
 import java.util.Scanner;
 
+import com.example.monopoly.Player;
+
 public class ComandoSair implements Comando {
     @Override
-    public void executar(Player player, Scanner scanner) {
+    public void executar(Player player) {
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.print("\nVocê tem certeza de que quer sair (Sim/Não)? ");
         String confirmation = scanner.nextLine();

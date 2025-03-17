@@ -1,12 +1,10 @@
-package com.example.monopoly.casas.command;
-
-import java.util.Scanner;
+package com.example.monopoly.casas.jailCommands;
 
 import com.example.monopoly.Player;
 
 public class ComandoPagar implements Comando {
     @Override
-    public void executar(Player player, Scanner scanner) {
+    public void executar(Player player) {
         int fineValue = 50;
 
         if (player.getPlayerMoney() >= fineValue) {

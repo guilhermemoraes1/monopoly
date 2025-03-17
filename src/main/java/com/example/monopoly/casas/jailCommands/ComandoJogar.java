@@ -1,13 +1,11 @@
-package com.example.monopoly.casas.command;
-
-import java.util.Scanner;
+package com.example.monopoly.casas.jailCommands;
 
 import com.example.monopoly.Player;
 
 public class ComandoJogar implements Comando {
 
     @Override
-    public void executar(Player player, Scanner scanner) {
+    public void executar(Player player) {
 
         int dice1 = (int) (Math.random() * 6) + 1; 
         int dice2 = (int) (Math.random() * 6) + 1; 

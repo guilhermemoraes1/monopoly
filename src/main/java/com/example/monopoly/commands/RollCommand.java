@@ -3,9 +3,12 @@ package com.example.monopoly.commands;
 import com.example.monopoly.Board;
 import com.example.monopoly.MonopolyGame;
 import com.example.monopoly.Player;
+import com.example.monopoly.PlayerManager;
 import com.example.monopoly.casas.Casa;
 
 public class RollCommand implements Command {
+    private PlayerManager playerManager;
+
     @Override
     public void execute(MonopolyGame game, Player player) {
         System.out.println(player.getName() + " rolled the dice!");
@@ -27,6 +30,21 @@ public class RollCommand implements Command {
         Board board = game.getBoard();
         Casa casaAtual = board.getCasaNaPosition(novaPosition);
         casaAtual.executarAcao(player);
+        if (player.bankruptcy(player)) {
+            System.out.println("O jogador " + player.getName() + " faliu e foi expulso do jogo!");
+            PlayerManager playerManager = game.getPlayerManager();
+            playerManager.removePlayer(player.getName());
+            int numPlayers = playerManager.getPlayers().size();
+
+            if (numPlayers == 1) {
+                // corrigir a formatacao, mas funciona
+                System.out.println("Parabéns! O jogador " + playerManager.getPlayers() + " venceu!");
+                game.quitGame();
+
+            } else {
+                System.out.println("Continuando o jogo com " + numPlayers + " jogadores.\n");
+            }
+        }
         game.nextTurn();
     }
 

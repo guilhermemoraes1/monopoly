@@ -1,6 +1,7 @@
 package com.example.monopoly;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class PlayerManager {
@@ -8,7 +9,7 @@ public class PlayerManager {
     private int currentPlayerIndex;
 
     public PlayerManager() {
-        this.players = new ArrayList<>();
+        players = new ArrayList<>();  // Inicializando a lista
     }
 
     public void createPlayers(int numPlayers, String playerNames, String tokenColors) {
@@ -50,5 +51,18 @@ public class PlayerManager {
 
     public void setCurrentPlayerIndex(int index) {
         this.currentPlayerIndex = index;
-    }  
+    } 
+
+    public void removePlayer(String name) {
+        Iterator<Player> iterator = players.iterator();
+        while (iterator.hasNext()) {
+            Player player = iterator.next();
+            if (player.getName().equals(name)) {
+                iterator.remove();
+                System.out.println("Jogador " + name + " removido com sucesso.");
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Jogador não encontrado para remoção");
+    }
 }

@@ -104,5 +104,9 @@ public class Player {
     public int getJogadasSeguidas() {
         return jogadasSeguidas;
     }
+
+    public boolean bankruptcy(Player player) {
+        return money < 0;
+    }
     
 }

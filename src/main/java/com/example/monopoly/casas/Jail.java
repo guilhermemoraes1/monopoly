@@ -2,8 +2,7 @@ package com.example.monopoly.casas;
 
 
 import com.example.monopoly.Player;
-import com.example.monopoly.casas.command.*;
-
+import com.example.monopoly.casas.jailCommands.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,7 +62,7 @@ public class Jail extends Casa{
                 Comando comandoObjeto = createComando(comando);
 
                 if (comandoObjeto != null) {
-                    comandoObjeto.executar(player, scanner);
+                    comandoObjeto.executar(player);
                 } else {
                     System.out.println("Comando inválido. Tente novamente.");
                 }
