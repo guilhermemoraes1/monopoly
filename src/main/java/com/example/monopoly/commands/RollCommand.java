@@ -4,7 +4,7 @@ import com.example.monopoly.Board;
 import com.example.monopoly.MonopolyGame;
 import com.example.monopoly.Player;
 import com.example.monopoly.PlayerManager;
-import com.example.monopoly.casas.Casa;
+import com.example.monopoly.places.Place;
 
 public class RollCommand implements Command {
     private PlayerManager playerManager;
@@ -28,7 +28,7 @@ public class RollCommand implements Command {
         }
 
         Board board = game.getBoard();
-        Casa casaAtual = board.getCasaNaPosition(novaPosition);
+        Place casaAtual = board.getPlaceInPosition(novaPosition);
         casaAtual.executarAcao(player);
         if (player.bankruptcy(player)) {
             System.out.println("O jogador " + player.getName() + " faliu e foi expulso do jogo!");
