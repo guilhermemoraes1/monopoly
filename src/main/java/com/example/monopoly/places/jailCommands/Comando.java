@@ -1,7 +1,5 @@
 package com.example.monopoly.places.jailCommands;
 
-import java.util.Scanner;
-
 import com.example.monopoly.Player;
 
 public interface Comando {

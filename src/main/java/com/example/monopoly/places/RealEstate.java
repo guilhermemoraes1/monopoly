@@ -1,5 +1,6 @@
 package com.example.monopoly.places;
 
+import com.example.monopoly.Board;
 import com.example.monopoly.Player;
 
 import java.util.Scanner;
@@ -9,8 +10,8 @@ public class RealEstate extends Place {
     private int price;
     private int rent;
 
-    public RealEstate(int position, String name, String group, int price, int rent) {
-        super(position, name);
+    public RealEstate(int position, String name, String group, int price, int rent, Board board) {
+        super(position, name, board);
         this.group = group;
         this.price = price;
         this.rent = rent;

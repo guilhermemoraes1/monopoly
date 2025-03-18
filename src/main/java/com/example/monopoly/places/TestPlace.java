@@ -1,10 +1,11 @@
 package com.example.monopoly.places;
 
+import com.example.monopoly.Board;
 import com.example.monopoly.Player;
 
 public class TestPlace extends Place{
-    public TestPlace(int position, String name) {
-        super(position, name);
+    public TestPlace(int position, String name, Board board) {
+        super(position, name, board);
     }
 
     @Override

@@ -43,6 +43,10 @@ public class Player {
         return position;
     }
 
+    public void setPlayerPosition(int position) {
+        this.position = position;
+    }
+
     public void mover(int steps) {
         position = (position + steps - 1) % 40 + 1;
     }
@@ -96,4 +100,16 @@ public class Player {
         return money < 0;
     }
     
+    public void voltar(int casas, Board board) {
+
+        int novaPosicao = getPlayerPosition() - casas;
+        if (novaPosicao < 1) {
+            novaPosicao += 40;
+        }
+
+        setPlayerPosition(novaPosicao);
+        System.out.println("O jogador " + getName() + " voltou " + casas + " casas.");
+        Place place = board.getPlace(casas);
+        System.out.println("Posição atual: " + getPlayerPosition() + " em " + place.getName());
+    }
 }

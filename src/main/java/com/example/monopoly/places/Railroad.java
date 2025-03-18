@@ -1,5 +1,6 @@
 package com.example.monopoly.places;
 
+import com.example.monopoly.Board;
 import com.example.monopoly.Player;
 
 import java.util.Scanner;
@@ -8,11 +9,10 @@ public class Railroad extends Place {
     private int price;
     private int race;
 
-    public Railroad(int position, String name, int price, int race) {
-        super(position, name);
+    public Railroad(int position, String name, int price, int race, Board board) {
+        super(position, name, board);
         this.price = price;
         this.race = race;
-
     }
 
     @Override

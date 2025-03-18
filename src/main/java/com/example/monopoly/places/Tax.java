@@ -1,11 +1,12 @@
 package com.example.monopoly.places;
 
+import com.example.monopoly.Board;
 import com.example.monopoly.Player;
 
 public class Tax extends Place{
     private boolean luxuryTax;
-    public Tax(int position, String name, boolean luxuryTax) {
-        super(position, name);
+    public Tax(int position, String name, boolean luxuryTax, Board board) {
+        super(position, name, board);
         this.luxuryTax = luxuryTax;
     }
 

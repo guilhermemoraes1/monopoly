@@ -1,6 +1,7 @@
 package com.example.monopoly.places;
 
 
+import com.example.monopoly.Board;
 import com.example.monopoly.Player;
 import com.example.monopoly.places.jailCommands.*;
 
@@ -12,8 +13,8 @@ public class Jail extends Place{
     private boolean visitingJail;
     private Map<String, Comando> comandos;
 
-    public Jail(int position, String name, boolean visitingJail) {
-        super(position, name);
+    public Jail(int position, String name, boolean visitingJail, Board board) {
+        super(position, name, board);
         this.visitingJail = visitingJail;
         inicializarComandos();
     }
