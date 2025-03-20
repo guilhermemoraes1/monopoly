@@ -14,8 +14,11 @@ public class MonopolyGame {
     private boolean isGameOn;
     private int numPlayers;
     private int currentPlayerIndex;
+    private Board board;
+
 
     public MonopolyGame(GameValidator gameValidator) {
+        this.board = new Board();
         this.gameValidator = gameValidator; 
         this.playerManager = new PlayerManager();
         this.gameController = new GameController();
@@ -46,13 +49,13 @@ public class MonopolyGame {
         }
     }
 
-    public Player getCurrentPlayer() {
-        return playerManager.getCurrentPlayer();
-    }
-
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % numPlayers;
         playerManager.setCurrentPlayerIndex(currentPlayerIndex);
+    }
+
+    public Player getCurrentPlayer() {
+        return playerManager.getCurrentPlayer();
     }
     
 
@@ -74,5 +77,9 @@ public class MonopolyGame {
 
     public PlayerManager getPlayerManager() {
         return playerManager;
+    }
+
+    public Board getBoard() {
+        return board;
     }
 }
