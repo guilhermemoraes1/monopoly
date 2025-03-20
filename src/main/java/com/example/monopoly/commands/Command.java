@@ -5,4 +5,5 @@ import com.example.monopoly.Player;
 
 public interface Command {
     void execute(MonopolyGame game, Player player);
+    void execute(Player player);
 }

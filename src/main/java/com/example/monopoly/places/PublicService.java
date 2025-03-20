@@ -32,12 +32,12 @@ public class PublicService extends Place{
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("O título do serviço " + getName() + " está disponível por $" + getPrice() + ".");
-        System.out.println(player.getName() + ", você possui $" + player.getPlayerMoney() + ".");
+        System.out.println("The service title " + getName() + " is available for $" + getPrice() + ".");
+        System.out.println(player.getName() + ", you have $" + player.getPlayerMoney() + ".");
 
-        System.out.print("Você deseja comprar " + getName() +  " (Sim/Não)? ");
+        System.out.print("Do you want to buy " + getName() + " (Yes/No)? ");
         String resposta = scanner.nextLine();
-        if (resposta.equalsIgnoreCase("Sim")) {
+        if (resposta.equalsIgnoreCase("yes")) {
             sellTo(player);
         }
         
@@ -49,25 +49,26 @@ public class PublicService extends Place{
         if (player.getPlayerMoney() >= getPrice()) {
             player.buy(this);
         } else {
-            System.out.println(player.getName() + ", você não tem dinheiro suficiente para comprar esta propriedade.");
+            System.out.println(player.getName() + ", you don't have enough money to buy this property");
         }
     }
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName());
+        System.out.println("The player advanced to position " + getPosition() + ", place: " + getName());
 
-        if (getOwner() != null) {
-            System.out.println("O serviço público " + getName() + " já possui proprietário.");
+        if (getOwner() == player ) {
+            System.out.println("You are the owner of the place.");;
+        } else if (getOwner() != null) {
+            System.out.println("The public service " + getName() + " already has an owner.");
 
             int fine = getPrice();
 
             player.decreaseMoney(fine);
             getOwner().increaseMoney(fine);
 
-            System.out.println("O player " + player.getName() + " pagou a fine fixa de $" + fine +
-                    " para " + getOwner().getName());
-            System.out.println("Novo saldo: $" + player.getPlayerMoney());
+            System.out.println("Player " + player.getName() + " paid rent of $" + fine + " to " + getOwner().getName());
+            System.out.println("New Balance: $" + player.getPlayerMoney());
 
         } else {
             offerToBuy(player);

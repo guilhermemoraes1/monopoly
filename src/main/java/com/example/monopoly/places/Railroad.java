@@ -41,12 +41,12 @@ public class Railroad extends Place {
     public void offerToBuy(Player player) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("A título da ferrovia " + getName() + " está disponível por $" + getPrice() + ".");
-        System.out.println(player.getName() + ", você possui $" + player.getPlayerMoney() + ".");
+        System.out.println("The railroad title " + getName() + " is available by $" + getPrice() + ".");
+        System.out.println(player.getName() + ", you have $" + player.getPlayerMoney() + ".");
 
-        System.out.print("Você deseja comprar " + getName() +  " (Sim/Não)? ");
+        System.out.print("Do you want to buy " + getName() + " (Yes/No)? ");
         String resposta = scanner.nextLine();
-        if (resposta.equalsIgnoreCase("Sim")) {
+        if (resposta.equalsIgnoreCase("yes")) {
             sellTo(player);
         }
         
@@ -58,25 +58,26 @@ public class Railroad extends Place {
         if (player.getPlayerMoney() >= getPrice()) {
             player.buy(this);
         } else {
-            System.out.println(player.getName() + ", você não tem dinheiro suficiente para comprar esta ferrovia.");
+            System.out.println(player.getName() + ", you don't have enough money to buy this railroad.");
         }
     }
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançou para " + getPosition() + " – " + getName());
+        System.out.println("The player advanced to position " + getPosition() + ", place: " + getName());
 
-        if (getOwner() != null) {
-            System.out.println("A ferrovia " + getName() + " já possui proprietário.");
+        if (getOwner() == player ) {
+            System.out.println("You are the owner of the place.");;
+        } else if (getOwner() != null) {
+            System.out.println("The railway " + getName() + " already has an owner.");
 
             int fine = getRace();
 
             player.decreaseMoney(fine);
             player.increaseMoney(fine);
 
-            System.out.println("O player " + player.getName() + " pagou o rent de $" + fine +
-                    " para " + player.getName());
-            System.out.println("Novo saldo: $" + player.getPlayerMoney());
+            System.out.println("Player " + player.getName() + " paid rent of $" + fine + " to " + player.getName());
+            System.out.println("New Balance: $" + player.getPlayerMoney());
 
         } else {
             offerToBuy(player);

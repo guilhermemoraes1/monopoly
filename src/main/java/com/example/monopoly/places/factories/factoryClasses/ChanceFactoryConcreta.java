@@ -1,9 +1,9 @@
-package com.example.monopoly.places.abstract_factory.concreta;
+package com.example.monopoly.places.factories.factoryClasses;
 
 import com.example.monopoly.places.Place;
 import com.example.monopoly.Board;
 import com.example.monopoly.places.Chance;
-import com.example.monopoly.places.abstract_factory.ChanceFactory;
+import com.example.monopoly.places.factories.ChanceFactory;
 
 public class ChanceFactoryConcreta implements ChanceFactory {
     @Override

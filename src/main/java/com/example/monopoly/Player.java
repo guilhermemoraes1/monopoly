@@ -3,9 +3,6 @@ package com.example.monopoly;
 import java.util.ArrayList;
 
 import com.example.monopoly.places.Place;
-import com.example.monopoly.places.PublicService;
-import com.example.monopoly.places.Railroad;
-import com.example.monopoly.places.RealEstate;
 
 public class Player {
     private String name;
@@ -51,9 +48,9 @@ public class Player {
         position = (position + steps - 1) % 40 + 1;
     }
 
-    public void decreaseMoney(int valor){ money -= valor; }
-    public void increaseMoney(int valor) {
-        money += valor;
+    public void decreaseMoney(int value){ money -= value; }
+    public void increaseMoney(int value) {
+        money += value;
     }
 
     public void buy(Place place) {
@@ -63,15 +60,15 @@ public class Player {
 
             if (place.getGroup() != null) {
                 addDeed(new Deed(place.getName(), place.getGroup(), place.getPrice()));
-                System.out.println(getName() + " comprou a realestate " + place.getName() + " por $" + place.getPrice() + ".");
+                System.out.println(getName() + " bought a realestate " + place.getName() + " for $" + place.getPrice() + ".");
             } else {
                 addDeed(new Deed(place.getName(), " ", place.getPrice()));
-                System.out.println(getName() + " comprou a propriedade " + place.getName() + " por $" + place.getPrice() + ".");
+                System.out.println(getName() + " bought a property " + place.getName() + " for $" + place.getPrice() + ".");
             }
             
             
         } else {
-            System.out.println(getName() + ", você não tem dinheiro suficiente para comprar esta propriedade.");
+            System.out.println(getName() + ", you don't have enough money to buy this property.");
         }
     }
 
@@ -100,16 +97,16 @@ public class Player {
         return money < 0;
     }
     
-    public void voltar(int casas, Board board) {
+    public void voltar(int places, Board board) {
 
-        int novaPosicao = getPlayerPosition() - casas;
-        if (novaPosicao < 1) {
-            novaPosicao += 40;
+        int newPosition = getPlayerPosition() - places;
+        if (newPosition < 1) {
+            newPosition += 40;
         }
 
-        setPlayerPosition(novaPosicao);
-        System.out.println("O jogador " + getName() + " voltou " + casas + " casas.");
-        Place place = board.getPlace(casas);
-        System.out.println("Posição atual: " + getPlayerPosition() + " em " + place.getName());
+        setPlayerPosition(newPosition);
+        System.out.println("The player " + getName() + " come back " + places + " places.");
+        Place place = board.getPlace(places);
+        System.out.println("Current Position: " + getPlayerPosition() + " in " + place.getName());
     }
 }

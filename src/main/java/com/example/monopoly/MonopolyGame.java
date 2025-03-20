@@ -46,13 +46,13 @@ public class MonopolyGame {
         }
     }
 
-    public Player getCurrentPlayer() {
-        return playerManager.getCurrentPlayer();
-    }
-
     public void nextTurn() {
         currentPlayerIndex = (currentPlayerIndex + 1) % numPlayers;
         playerManager.setCurrentPlayerIndex(currentPlayerIndex);
+    }
+
+    public Player getCurrentPlayer() {
+        return playerManager.getCurrentPlayer();
     }
 
     public Set<String> getCommands() {

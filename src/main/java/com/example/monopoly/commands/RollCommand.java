@@ -22,27 +22,26 @@ public class RollCommand implements Command {
 
         player.mover(diceSum);
 
-        int novaPosition = player.getPlayerPosition();
-        if (novaPosition > 40) {
-            novaPosition -= 40;
+        int newPosition = player.getPlayerPosition();
+        if (newPosition > 40) {
+            newPosition -= 40;
         }
 
         Board board = game.getBoard();
-        Place casaAtual = board.getPlaceInPosition(novaPosition);
-        casaAtual.executarAcao(player);
+        Place currentPlace = board.getPlaceInPosition(newPosition);
+        currentPlace.executarAcao(player);
         if (player.bankruptcy(player)) {
-            System.out.println("O jogador " + player.getName() + " faliu e foi expulso do jogo!");
+            System.out.println("The player " + player.getName() + " lost all the money and died");
             PlayerManager playerManager = game.getPlayerManager();
             playerManager.removePlayer(player.getName());
             int numPlayers = playerManager.getPlayers().size();
 
             if (numPlayers == 1) {
-                // corrigir a formatacao, mas funciona
                 System.out.println("Parabéns! O jogador " + playerManager.getPlayers() + " venceu!");
                 game.quitGame();
 
             } else {
-                System.out.println("Continuando o jogo com " + numPlayers + " jogadores.\n");
+                System.out.println("Continue the game with " + numPlayers + " player left.\n");
             }
         }
         game.nextTurn();
@@ -52,5 +51,24 @@ public class RollCommand implements Command {
         if (firstDieResult <= 0 || firstDieResult > 6 || secondDieResult <= 0 || secondDieResult > 6) {
             throw new IllegalArgumentException("Invalid die result");
         }
+    }
+
+    @Override
+    public void execute(Player player) {
+        int dice1 = (int) (Math.random() * 6) + 1; 
+        int dice2 = (int) (Math.random() * 6) + 1; 
+
+        System.out.println("\nThe player " + player.getName() + " had " + dice1 + "," + dice2);
+
+        if (dice1 == dice2) {
+
+            System.out.println("You left the jail!\n");
+            player.resetarJogadas();
+
+        } else {
+            System.out.println("You weren't able to leave the jail.\n");
+            player.incrementarJogadas();
+        }
+
     }
 }

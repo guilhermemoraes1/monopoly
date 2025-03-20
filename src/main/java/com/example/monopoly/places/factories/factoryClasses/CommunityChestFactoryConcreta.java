@@ -1,9 +1,9 @@
-package com.example.monopoly.places.abstract_factory.concreta;
+package com.example.monopoly.places.factories.factoryClasses;
 
 import com.example.monopoly.places.Place;
 import com.example.monopoly.Board;
 import com.example.monopoly.places.CommunityChest;
-import com.example.monopoly.places.abstract_factory.CommunityChestFactory;
+import com.example.monopoly.places.factories.CommunityChestFactory;
 
 public class CommunityChestFactoryConcreta implements CommunityChestFactory {
     @Override

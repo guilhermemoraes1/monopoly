@@ -1,8 +1,8 @@
-package com.example.monopoly.places.abstract_factory.concreta;
+package com.example.monopoly.places.factories.factoryClasses;
 
 import com.example.monopoly.Board;
 import com.example.monopoly.places.Railroad;
-import com.example.monopoly.places.abstract_factory.RailroadFactory;
+import com.example.monopoly.places.factories.RailroadFactory;
 
 public class RailroadFactoryConcreta implements RailroadFactory {
     @Override

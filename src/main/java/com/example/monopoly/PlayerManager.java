@@ -59,10 +59,10 @@ public class PlayerManager {
             Player player = iterator.next();
             if (player.getName().equals(name)) {
                 iterator.remove();
-                System.out.println("Jogador " + name + " removido com sucesso.");
+                System.out.println("Player " + name + " removed with sucess.");
                 return;
             }
         }
-        throw new IllegalArgumentException("Jogador não encontrado para remoção");
+        throw new IllegalArgumentException("Player not found for removal");
     }
 }

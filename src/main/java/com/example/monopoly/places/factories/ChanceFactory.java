@@ -1,4 +1,4 @@
-package com.example.monopoly.places.abstract_factory;
+package com.example.monopoly.places.factories;
 
 import com.example.monopoly.Board;
 import com.example.monopoly.places.Chance;

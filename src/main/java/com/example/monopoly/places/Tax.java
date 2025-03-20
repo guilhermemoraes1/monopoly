@@ -30,22 +30,19 @@ public class Tax extends Place{
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançou para " + getPosition() + " – " + getName());
+        System.out.println("The player advanced to position " + getPosition() + ", place: " + getName());
 
         int luxuryTax = 75;
         int incomeTax = 200;
 
-        if(!isLuxuryTax()){
-            // pagar tax de renda
-            System.out.println("O player " + player.getName() + " pagou $" + incomeTax + " de tax de renda.");
-            player.decreaseMoney(incomeTax);
-            System.out.println("Novo saldo: $" + player.getPlayerMoney() + "\n");
-
-        } else {
-            // pagar tax de riqueza
-            System.out.println("O player " + player.getName() + " pagou $" + luxuryTax + " de tax de riqueza.");
+        if(isLuxuryTax()){
+            System.out.println("The player " + player.getName() + " paid $" + luxuryTax + " of luxury tax.");
             player.decreaseMoney(luxuryTax);
-            System.out.println("Novo saldo: $" + player.getPlayerMoney() + "\n");
+            System.out.println("New Balance: $" + player.getPlayerMoney() + "\n");
+        } else {
+            System.out.println("The player " + player.getName() + " paid $" + incomeTax + " of impost tax.");
+            player.decreaseMoney(incomeTax);
+            System.out.println("New Balance: $" + player.getPlayerMoney() + "\n");
         }
 
     }

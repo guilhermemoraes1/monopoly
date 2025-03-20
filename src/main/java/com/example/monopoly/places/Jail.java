@@ -3,7 +3,7 @@ package com.example.monopoly.places;
 
 import com.example.monopoly.Board;
 import com.example.monopoly.Player;
-import com.example.monopoly.places.jailCommands.*;
+import com.example.monopoly.commands.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class Jail extends Place{
     private boolean visitingJail;
-    private Map<String, Comando> comandos;
+    private Map<String, Command> commands;
 
     public Jail(int position, String name, boolean visitingJail, Board board) {
         super(position, name, board);
@@ -33,54 +33,63 @@ public class Jail extends Place{
     }
 
     private void inicializarComandos() {
-        comandos = new HashMap<>();
-        comandos.put("jogar", new ComandoJogar());
-        comandos.put("pagar", new ComandoPagar());
-        comandos.put("carta", new ComandoCarta());
-        comandos.put("status", new ComandoStatus());
-        comandos.put("sair", new ComandoSair());
+        commands = new HashMap<>();
+        commands.put("card", new UseCardCommand());
+        commands.put("pay", new PayCommand());
+        commands.put("roll", new RollCommand());
+        commands.put("status", new StatusCommand());
+        commands.put("quit", new QuitCommand());
     }
 
-    public Comando createComando(String comando) {
-        return comandos.get(comando.toLowerCase());
+    // private void inicializarComandos() {
+    //     commands = new HashMap<>();
+    //     commands.put("roll", new ComandoJogar());
+    //     commands.put("pagar", new ComandoPagar());
+    //     commands.put("carta", new ComandoCarta());
+    //     commands.put("status", new ComandoStatus());
+    //     commands.put("sair", new ComandoSair());
+    // }
+
+    public Command createCommand(String command) {
+        return commands.get(command.toLowerCase());
     }
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName());
+        System.out.println("The player advanced to position " + getPosition() + ", place: " + getName());
 
         if (!isVisitingJail()) {
-            System.out.println(" " + player.getName() + " está na prisão.");
+            System.out.println(" " + player.getName() + " is in jail.");
 
             Scanner scanner = new Scanner(System.in);
             int fineValue = 50;
 
             while (player.getJogadasSeguidas() < 3) {
-                System.out.println("Comandos disponíveis: [pagar][carta][jogar][status][sair]");
-                System.out.print("Entre com um comando: ");
-                String comando = scanner.nextLine().toLowerCase();
+                System.out.println("Comandos disponíveis: [roll][card][pay][status][quit]");
+                System.out.print("Enter a command: ");
+                String command = scanner.nextLine().toLowerCase();
 
-                Comando comandoObjeto = createComando(comando);
+                Command cmd = createCommand(command);
 
-                if (comandoObjeto != null) {
-                    comandoObjeto.executar(player);
+                if (cmd != null) {
+                    cmd.execute(player);
                 } else {
-                    System.out.println("Comando inválido. Tente novamente.");
+                    System.out.println("Invalid command. Please try again.");
                 }
 
-                if (player.getPlayerMoney() >= fineValue || player.getJogadasSeguidas() == 0) {
+                if ( player.getJogadasSeguidas() == 0) {
                     break;
                 }
             }
 
             if (player.getJogadasSeguidas() == 3) {
 
-                System.out.println("Você não conseguiu sair da prisão após 3 tentativas. Pagou $50.");
+                System.out.println("You failed to get out of jail after 3 attempts. Paid $50.");
                 player.decreaseMoney(fineValue);
                 player.resetarJogadas();
             }
         } else {
-            System.out.println(player.getName() + " está na prisão. Apenas visitando.");
+            System.out.println(player.getName() + " is in jail. Just visiting.");
         }
     }
 

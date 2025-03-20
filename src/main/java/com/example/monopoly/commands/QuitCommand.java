@@ -10,16 +10,18 @@ public class QuitCommand implements Command {
     public void execute(MonopolyGame game, Player player) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("\nVocê tem certeza de que quer sair (Sim/Não)? ");
-        String confirmacao = scanner.nextLine();
+        System.out.print("\nAre you sure you want to leave (yes/no)? ");
+        String confirmation = scanner.nextLine();
 
-        if ("Sim".equalsIgnoreCase(confirmacao)) {
-
-            System.out.println("\nAté a próxima!");
+        if ("yes".equalsIgnoreCase(confirmation)) {
             game.quitGame();
 
         } else {
-            System.out.println("Continuando o jogo.\n");
+            System.out.println("Continue with the game.\n");
         }
+
     }
+
+    @Override
+    public void execute(Player player) {}
 }

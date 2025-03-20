@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.example.monopoly.places.*;
-import com.example.monopoly.places.abstract_factory.*;
-import com.example.monopoly.places.abstract_factory.concreta.*;
+import com.example.monopoly.places.factories.*;
+import com.example.monopoly.places.factories.factoryClasses.*;
 
 public class Board {
 
@@ -39,7 +39,7 @@ public class Board {
         places.add(chanceFactory.createChance(7, "Chance 1", this, null));
         places.add(realestateFactory.createRealEstate(8, "Vermont Avenue", "ciano", 100, 6, this));
         places.add(realestateFactory.createRealEstate(9, "Connecticut Avenue", "ciano", 120, 8, this));
-        places.add(jailFactory.createJail(10, "Prisão: Apenas Visitando", true, this));
+        places.add(jailFactory.createJail(10, "Jail, Just visiting", true, this));
         places.add(realestateFactory.createRealEstate(11, "St. Charles Casa", "rosa", 140, 10, this));
         places.add(publicServiceFactory.createPublicService(12, "Companhia Elétrica", 150, this));
         places.add(realestateFactory.createRealEstate(13, "States Avenue", "rosa", 140, 10, this));
@@ -49,7 +49,7 @@ public class Board {
         places.add(communityChestFactory.createCommunityChest(17, "Cofre Comunitário 2", this, null));
         places.add(realestateFactory.createRealEstate(18, "Tennessee Avenue", "laranja", 180, 14, this));
         places.add(realestateFactory.createRealEstate(19, "New York Avenue", "laranja", 200, 16, this));
-        places.add(new TestPlace(20, "Free Parking", this));
+        places.add(new FreeParking(20, "Free Parking", this));
         places.add(realestateFactory.createRealEstate(21, "Kentucky Avenue", "vermelho", 220, 18, this));
         places.add(chanceFactory.createChance(22, "Chance 2", this, null));
         places.add(realestateFactory.createRealEstate(23, "Indiana Avenue", "vermelho", 220, 18, this));
@@ -59,7 +59,7 @@ public class Board {
         places.add(realestateFactory.createRealEstate(27, "Ventnor Avenue", "amarelo", 260, 22, this));
         places.add(publicServiceFactory.createPublicService(28, "Companhia de Água", 150, this));
         places.add(realestateFactory.createRealEstate(29, "Marvin Gardens", "amarelo", 280, 24, this));
-        places.add(jailFactory.createJail(30, "Vá para Prisão", false, this));
+        places.add(jailFactory.createJail(30, "Go to jail", false, this));
         places.add(realestateFactory.createRealEstate(31, "Pacific Avenue", "verde", 300, 26, this));
         places.add(realestateFactory.createRealEstate(32, "North Carolina Avenue", "verde", 300, 26, this));
         places.add(communityChestFactory.createCommunityChest(33, "Cofre Comunitário 3", this, null));
@@ -117,19 +117,19 @@ public class Board {
 
     public Place getPlace(int placeID) {
         if (placeID < 1 || placeID > maxCasaId) {
-            throw new IllegalArgumentException("Casa doesn't exist");
+            throw new IllegalArgumentException("Place doesn't exist");
         }
         return places.get(placeID);
     }
 
     public List<Railroad> getFerrovias() {
-        List<Railroad> ferrovias = new ArrayList<>();
+        List<Railroad> railroads = new ArrayList<>();
         for (Place casa : places) {
             if (casa instanceof Railroad) {
-                ferrovias.add((Railroad) casa);
+                railroads.add((Railroad) casa);
             }
         }
-        return ferrovias;
+        return railroads;
     }
 
     public List<PublicService> getServicoPublico() {

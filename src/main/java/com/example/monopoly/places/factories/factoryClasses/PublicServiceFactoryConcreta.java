@@ -1,8 +1,8 @@
-package com.example.monopoly.places.abstract_factory.concreta;
+package com.example.monopoly.places.factories.factoryClasses;
 
 import com.example.monopoly.Board;
 import com.example.monopoly.places.PublicService;
-import com.example.monopoly.places.abstract_factory.PublicServiceFactory;
+import com.example.monopoly.places.factories.PublicServiceFactory;
 
 public class PublicServiceFactoryConcreta implements PublicServiceFactory {
     @Override

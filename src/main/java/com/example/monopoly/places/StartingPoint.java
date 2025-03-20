@@ -21,7 +21,9 @@ public class StartingPoint extends Place {
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançou para " + player.getPlayerPosition() + " – " + player.getName());
+        System.out.println("The player advanced to position " + getPosition() + ", place: " + getName());
+        player.increaseMoney(200);
+        System.out.println("The player " + player.getName() + " received $200.");
     }
 
     @Override

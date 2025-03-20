@@ -3,8 +3,8 @@ package com.example.monopoly.places;
 import com.example.monopoly.Board;
 import com.example.monopoly.Player;
 
-public class TestPlace extends Place{
-    public TestPlace(int position, String name, Board board) {
+public class FreeParking extends Place{
+    public FreeParking(int position, String name, Board board) {
         super(position, name, board);
     }
 
@@ -20,7 +20,7 @@ public class TestPlace extends Place{
 
     @Override
     public void executarAcao(Player player) {
-        System.out.println(" e o peão avançõu para " + player.getPlayerPosition() + " – " + getName());
+        System.out.println("The player advanced to position " + getPosition() + ", place: " + getName());
 
     }
 

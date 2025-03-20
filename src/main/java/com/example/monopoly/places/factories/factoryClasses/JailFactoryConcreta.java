@@ -1,8 +1,8 @@
-package com.example.monopoly.places.abstract_factory.concreta;
+package com.example.monopoly.places.factories.factoryClasses;
 
 import com.example.monopoly.Board;
 import com.example.monopoly.places.Jail;
-import com.example.monopoly.places.abstract_factory.JailFactory;
+import com.example.monopoly.places.factories.JailFactory;
 
 public class JailFactoryConcreta implements JailFactory {
     @Override
